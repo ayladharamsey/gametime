@@ -6,20 +6,20 @@ import Deck from '../src/Deck';
 describe('Deck', function() {
 
   let deck1;
-  beforeEach(function() {
+  beforeEach(() => {
     deck1 = new Deck(data)
   });
 
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(Deck).to.be.a('function');
   });
 
-  it('should be an instance of Game', function() {
+  it('should be an instance of Game', () => {
     expect(deck1).to.be.an.instanceof(Deck);
   });
 
-  it('should hold data', function() {
+  it('should hold data', () => {
     expect(deck1.categories).to.eql({
         'unitedStatesHistory': 1,
         'lifeSciences': 2,
@@ -36,6 +36,14 @@ describe('Deck', function() {
 
   it('should have a cards property and hold cards', function() {
       expect(deck1.cards.length).to.eql(114)
+  });
+
+  it('should get 4 categories', function() {
+
+      deck1.assignCategories()
+      console.log(deck1.roundCategories)
+      console.log(deck1.categories)
+      expect(deck1.roundCategories.length).to.eql(4)
   });
 
 
