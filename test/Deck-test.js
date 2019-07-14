@@ -42,7 +42,7 @@ describe('Deck', function() {
       expect(deck1.roundCategories.length).to.eql(4)
   });
 
-  it.skip('should get 4 sets of cards relating to categories', () => {
+  it('should get 4 sets of cards relating to categories', () => {
       deck1.assignCategories()
       console.log(deck1.roundCategories)
       console.log(deck1.assignCards())

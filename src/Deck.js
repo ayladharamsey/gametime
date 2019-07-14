@@ -18,14 +18,21 @@ class Deck {
 }
 
 
-  // assignCards() {
-  //   const randomCardSet = []
-  //   return this.cards.filter(el => el.categoryId === this.roundCategories.map(el => el[0][1]))
-  //
-  //   // const categoryTwoCards
-  //   // const categoryThreeCards
-  //   // const categoryFourCards
-  // }
+  assignCards() {
+    let pointValues = [100, 200, 300, 400]
+    let randomCardSet = []
+    let finalCardSet = []
+    let ids = this.roundCategories.map(el => el[1])
+    ids.forEach((id, index) => {
+      randomCardSet.push(this.cards.filter(el => el.categoryId === ids[index]))
+    })
+      pointValues.forEach((value, index1) => {
+      finalCardSet.push(randomCardSet.map(nestedArray => nestedArray.find(ely => ely.pointValue === pointValues[index1])))
+    })
+      return finalCardSet
+
+  }
+
 
 }
 
