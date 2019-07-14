@@ -39,10 +39,7 @@ describe('Deck', function() {
   });
 
   it('should get 4 categories', function() {
-
       deck1.assignCategories()
-      console.log(deck1.roundCategories)
-      console.log(deck1.categories)
       expect(deck1.roundCategories.length).to.eql(4)
   });
 
