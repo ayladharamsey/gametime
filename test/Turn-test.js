@@ -1,11 +1,9 @@
 import chai from 'chai'
 import Turn from '../src/Turn.js'
-import Dataset from '../src/Dataset.js'
 const expect = chai.expect;
 
 describe('turn', () => {
   let turn;
-  let dataset;
 
   beforeEach(() => {
     turn = new Turn(0);
@@ -23,7 +21,7 @@ describe('turn', () => {
     expect(turn.currentPlayer).to.equal(0);
   });
 
-  it('should be able to determine when a player\'s turn has come to an end, () => {
+  it('should be able to determine when a player\'s turn has come to an end', () => {
     expect(turn.determinePlayersEndOfTurn()).to.be.equal(true);
     expect(turn.currentPlayer).to.equal(1);
   });
@@ -39,15 +37,15 @@ describe('turn', () => {
     expect(round.cardsPointValue).to.equal(100); // I don't think this is correct. If you look at the dataset, there are multiple cards with the id of 10 that have various point values.
   });
 
-  it('should evaluate whether the player\'s guess is incorrect, () => {
+  it('should evaluate whether the player\'s guess is incorrect', () => {
     expect(turn.evaluatePlayersGuesses('potatoes', 'An energetic person is full of these, maybe the fava type', 'beans')).to.equal(false)
   });
 
-  it('should evaluate whether the player\'s guess is correct, () => {
+  it('should evaluate whether the player\'s guess is correct', () => {
     expect(turn.evaluatePlayersGuesses('beans', 'An energetic person is full of these, maybe the fava type', 'beans')).to.equal(true)
   });
 
-  it('should increment point value if correct, () => {
+  it('should increment point value if correct', () => {
     expect(turn.evaluatePlayersGuesses('beans', 'An energetic person is full of these, maybe the fava type', 'beans')).to.equal(true)
     expect(player.playerScore).to.equal(400) //actual amount incremented is not correct
   });
