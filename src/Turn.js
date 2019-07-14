@@ -16,7 +16,7 @@ class Turn {
 
   }
 
-  playerPickCard() {
+  playerPickCardValue(valuePicked) {
 
   }
 
@@ -24,7 +24,7 @@ class Turn {
 
   }
 
-  evaluatePlayersGuesses() {
+  evaluatePlayersGuesses(playerGuess, question, correctAnswer) {
     
   }
 }
