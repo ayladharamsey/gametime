@@ -1,12 +1,18 @@
 import chai from 'chai'
 import Turn from '../src/Turn.js'
+import Player from '../src/Player.js'
+import Round from '../src/Round.js'
 const expect = chai.expect;
 
 describe('turn', () => {
   let turn;
+  let player;
+  let round;
 
   beforeEach(() => {
     turn = new Turn(0);
+    player = new Player();
+    round = new Round();
   });
 
   it('should be a function', () => {
