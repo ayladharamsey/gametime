@@ -2,7 +2,6 @@ import chai from 'chai';
 const expect = chai.expect;
 import data from '../src/dataset.js'
 import Deck from '../src/Deck';
-
 describe('Deck', function() {
 
   let deck1;
@@ -34,18 +33,21 @@ describe('Deck', function() {
       })
   });
 
-  it('should have a cards property and hold cards', function() {
+  it('should have a cards property and hold cards', () => {
       expect(deck1.cards.length).to.eql(114)
   });
 
-  it('should get 4 categories', function() {
+  it('should get 4 categories', () => {
       deck1.assignCategories()
       expect(deck1.roundCategories.length).to.eql(4)
   });
 
-
-
-
+  it.skip('should get 4 sets of cards relating to categories', () => {
+      deck1.assignCategories()
+      console.log(deck1.roundCategories)
+      console.log(deck1.assignCards())
+      expect(4).to.eql(4)
+  });
 
 
 
