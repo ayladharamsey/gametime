@@ -50,7 +50,7 @@ describe('turn', () => {
     expect(player.playerScore).to.equal(400) //actual amount incremented is not correct
   });
 
-  it('should decreemt point value if correct, () => {
+  it('should decreemt point value if correct', () => {
     expect(turn.evaluatePlayersGuesses('potatoes', 'An energetic person is full of these, maybe the fava type', 'beans')).to.equal(false)
     expect(player.playerScore).to.equal(100) //actual amount decemented is not correct
   });
