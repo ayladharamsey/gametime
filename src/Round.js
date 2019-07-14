@@ -1,9 +1,9 @@
 class Round {
-  constructor(cards, category, cardsPointValue) {
+  constructor(deck, category, cardsPointValue) {
     this.roundCount = 1;
     this.dailyDoubleOne;
     this.dailyDoubleTwo;
-    this.cards = cards;
+    this.deck = deck;
     this.category = category;
     this.cardsPointValue = cardsPointValue;
   }

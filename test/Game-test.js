@@ -1,6 +1,6 @@
 import chai from 'chai'
 import Game from '../src/Game.js'
-import Dataset from '../src/Dataset.js'
+import Dataset from '../src/dataset.js'
 const expect = chai.expect;
 
 describe('game', () => {
