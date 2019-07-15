@@ -1,23 +1,27 @@
 class Deck {
   constructor (data) {
     this.categories = data.categories
-    this.cards = data.clues
-    this.randomCatergories = Object.entries(this.categories).sort( (a, b) => 0.5 - Math.random())
-    this.roundCategories
-    this.cardSet
+    this.cards = data.clues;
+    this.randomCategories = Object.entries(this.categories).sort( (a, b) => 0.5 - Math.random())
+    this.roundCategories;
+    this.cardSet;
   }
 
 
-  assignCategories() {
-    // if (round.roundCounter === 1) {
-      this.roundCategories = this.randomCatergories.slice(0, 4)
-  //   }
-  //   else if (round.roundCounter === 2) {
-  //     this.roundCategories = randomCatergories.slice(4, 9)
-  //   }
-  //   else this.roundCategories = randomCatergories.slice(10)
-}
+  assignCategoriesRound1() {
+    this.roundCategories = this.randomCategories.slice(0, 4)
+    this.assignCards();
+  }
 
+  assignCategoriesRound2() {
+    this.roundCategories = this.randomCategories.slice(4, 9)
+    this.assignCards();
+  }
+
+  assignCategoriesRound3() {
+    this.roundCategories = this.randomCategories.slice(10)
+    this.assignCards();
+  }
 
   assignCards() {
     let pointValues = [100, 200, 300, 400]
@@ -27,10 +31,10 @@ class Deck {
     ids.forEach((id, index) => {
       randomCardSet.push(this.cards.filter(el => el.categoryId === ids[index]))
     })
-      pointValues.forEach((value, index1) => {
+    pointValues.forEach((value, index1) => {
       finalCardSet.push(randomCardSet.map(nestedArray => nestedArray.find(ely => ely.pointValue === pointValues[index1])))
     })
-      this.cardSet = finalCardSet
+    this.cardSet = finalCardSet
 
   }
 

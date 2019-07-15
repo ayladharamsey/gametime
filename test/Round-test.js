@@ -11,6 +11,7 @@ describe('Round', () => {
 
   beforeEach(() => {
     deck = new Deck(data)
+    deck.assignCategoriesRound1();
     round = new Round(deck)
   });
 
@@ -27,9 +28,7 @@ describe('Round', () => {
   });  
 
   it('should return the card question', () => {
-    deck.assignCategories();
-    deck.assignCards();
-    expect(round.deck.cardset).to.equal();
+    expect(round.currentCardSet).to.eql(deck.cardSet);
   });
 
   it.skip('should return the card answer', () => {

@@ -38,15 +38,12 @@ describe('Deck', function() {
   });
 
   it('should get 4 categories', () => {
-      deck1.assignCategories()
+      deck1.assignCategoriesRound1()
       expect(deck1.roundCategories.length).to.eql(4)
   });
 
   it('should get 4 sets of cards relating to categories', () => {
-      deck1.assignCategories()
-      deck1.assignCards()
-      console.log(deck1.roundCategories)
-      console.log(deck1.cardSet)
+      deck1.assignCategoriesRound1()
       expect(deck1.cardSet.length).to.eql(4)
   });
 
