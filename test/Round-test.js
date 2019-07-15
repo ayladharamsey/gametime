@@ -23,8 +23,8 @@ describe('Round', () => {
     expect(round).to.be.an.instanceOf(Round);
   });
 
-  it('should start the round count at 1', () => {
-    expect(round.roundCount).to.equal(1);
+  it('should start the round count at 0', () => {
+    expect(round.roundCount).to.equal(0);
   });  
 
   it('should return the card question', () => {

@@ -3,12 +3,17 @@
 class Round {
   constructor(deck) {
     this.deck = deck;
-    this.roundCount = 1;
+    this.roundCount = 0;
     this.dailyDoubleOne;
     this.dailyDoubleTwo;
     this.currentCardSet = deck.cardSet;
     this.remainingCardCount = 16;
   }
+
+  startRound() {
+    this.roundCount++
+  }
+  
 
   generateRandomDailyDoubleCard() {
   }
