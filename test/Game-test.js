@@ -11,7 +11,7 @@ describe('game', () => {
     game = new Game();
   });
 
-  it.only('should be a function', () => {
+  it('should be a function', () => {
     expect(Game).to.be.a('function');
   });
 });
