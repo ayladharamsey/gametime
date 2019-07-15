@@ -1,18 +1,24 @@
 import chai from 'chai'
-import Round from '../src/Round.js'
 import data from '../src/dataset.js'
+import Player from '../src/Player.js'
+import Turn from '../src/Turn.js'
 import Deck from '../src/Deck.js'
+import Round from '../src/Round.js'
 const expect = chai.expect;
 
 
 describe('Round', () => {
   let round; 
   let deck;
+  let turn;
+  let player;
 
   beforeEach(() => {
+    player = new Player('bill')
+    turn = new Turn(player)
     deck = new Deck(data)
     deck.assignCategoriesRound1();
-    round = new Round(deck)
+    round = new Round(turn, deck)
   });
 
   it('should be a function', () => {
