@@ -1,17 +1,16 @@
+// import Deck from "./Deck";
+
 class Round {
-  constructor(question, pointValue, answer, category) {
+  constructor(deck) {
+    this.deck = deck;
     this.roundCount = 1;
     this.dailyDoubleOne;
     this.dailyDoubleTwo;
-    // this.deck = deck;
-    this.question = question;
-    this.pointValue = pointValue;
-    this.answer = answer;
-    this.category = category;
+    this.currentCardSet = deck.cardSet;
+    this.remainingCardCount = 16;
   }
 
   generateRandomDailyDoubleCard() {
-
   }
 
   generateRandomDailyDoubleCard2() {
