@@ -1,5 +1,5 @@
 class Turn {
-  constructor(deck, currentPlayer) {
+  constructor(currentPlayer) {
     this.currentPlayer = currentPlayer;
     this.guessCount = 0;
   }
@@ -20,7 +20,7 @@ class Turn {
 
   }
 
-  trackPlayerScore() {
+  changePlayerScore() {
 
   }
 
