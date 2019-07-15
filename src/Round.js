@@ -1,13 +1,12 @@
 class Round {
-  constructor(question, pointValue, answer, category) {
+  constructor(deck) {
     this.roundCount = 1;
     this.dailyDoubleOne;
     this.dailyDoubleTwo;
-    // this.deck = deck;
-    this.question = question;
-    this.pointValue = pointValue;
-    this.answer = answer;
-    this.category = category;
+    this.currentCardSet = deck.cardSet;
+    console.log("1: ", deck.categories)
+    console.log("2: ", deck.cardSet)
+    this.remainingCardCount = 16;
   }
 
   generateRandomDailyDoubleCard() {
