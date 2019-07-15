@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome to Jeopardy!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="normalize" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="base.scss">
+</head>
+<body>
+  <main>
+    <h1 class="splash-h1">Welcome To Jeopardy!</h1>
+    <h2 class="splash-h2">Please Enter the Names of all Three Players Below</h2>
+    <form class="start-game-form">
+      <label for="player-one-name-input">Player 1</label>
+      <input type="text" placeholder="Player 1 Name" class="name-input" id="player-one-name-input" aria-required="true">
+      <label for="player-two-name-input">Player 2</label>
+      <input type="text" placeholder="Player 2 Name" class="name-input" id="player-two-name-input" aria-required="true">
+      <label for="player-three-name-input">Player 3</label>
+      <input type="text" placeholder="Player 3 Name" class="name-input" id="player-three-name-input"
+        aria-required="true">
+      <button type="submit" class="start-game-button">Start Game</button>
+    </form>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
+<script type="text/javascript" src="./script.js"></script>
+</html>
