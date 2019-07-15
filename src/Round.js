@@ -1,14 +1,20 @@
 class Round {
-  constructor(deck, category, cardsPointValue) {
+  constructor(question, pointValue, answer, category) {
     this.roundCount = 1;
     this.dailyDoubleOne;
     this.dailyDoubleTwo;
-    this.deck = deck;
+    // this.deck = deck;
+    this.question = question;
+    this.pointValue = pointValue;
+    this.answer = answer;
     this.category = category;
-    this.cardsPointValue = cardsPointValue;
   }
 
   generateRandomDailyDoubleCard() {
+
+  }
+
+  generateRandomDailyDoubleCard2() {
 
   }
 
@@ -17,18 +23,6 @@ class Round {
   }
 
   determineCardValueForRounds() {
-
-  }
-
-  instantiateRoundOne() {
-
-  }
-
-  instantiateRoundTwo() {
-
-  }
-
-  instantiateRoundThree() {
 
   }
 
