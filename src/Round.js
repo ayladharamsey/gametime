@@ -26,18 +26,6 @@ class Round {
 
   }
 
-  instantiateRoundOne() {
-
-  }
-
-  instantiateRoundTwo() {
-
-  }
-
-  instantiateRoundThree() {
-
-  }
-
   removeClickedCategoriesFromArray() {
 
   }

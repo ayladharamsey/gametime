@@ -1,15 +1,21 @@
 import chai from 'chai'
 import Round from '../src/Round.js'
 import data from '../src/dataset.js'
-// import Deck from '../src/Deck.js'
+import Deck from '../src/Deck.js'
 const expect = chai.expect;
 
 
 describe('Round', () => {
   let round; 
+  let deck;
 
   beforeEach(() => {
     round = new Round("Scorecard Report\" & \"Peter Jacobsen Plugged In\" are seen on the sports channel devoted to this", 100, "golf", 10)
+  });
+
+  beforeEach(() => {
+    deck = new Deck(data)
+    round = new Round(deck)
   });
 
   it('should be a function', () => {
@@ -52,22 +58,12 @@ describe('Round', () => {
     expect(round.determineCardValueForRounds()).to.equal(100);
   });
 
-  it('should instantiate round one', () => {
-    // expect(round.instantiateRoundOne).to.equal((roundCount)1, (cards array)[], dailyDouble1, pointValue);
-    expect(round.instantiateRoundOne).to.equal(1, [], dailyDouble1, pointValue);
-  }); 
-
-  it('should instantiate round two', () => {
-    // expect(round.instantiateRoundTwo).to.equal((roundCount)2, (cards array)[], dailyDouble1, dailyDouble2, pointValue * 2);
-    expect(round.instantiateRoundTwo).to.equal(2, [], dailyDouble1, dailyDouble2, pointValue * 2);
-  }); 
-
-  it('should instantiate round three', () => {
-    // expect(round.instantiateRoundThree).to.equal((roundCount)3, (card object){});
-    expect(round.instantiateRoundThree).to.equal(3, {});
-  }); 
-
   it('should return remove clicked clues from array', () => {
     expect(round.removeClickedCategoriesFromArray()).to.equal([[1, 1, 1, 1], [2, 2, 2], [3, 3], [4]]);
+  });
+
+  it('should end game once array length is 0', () => {
+    
+    expect(round.endGame()).to.equal();
   });
 });

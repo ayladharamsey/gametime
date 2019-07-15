@@ -1,7 +1,7 @@
 class Turn {
-  constructor(currentPlayer, guess) {
+  constructor(deck, currentPlayer) {
     this.currentPlayer = currentPlayer;
-    this.guess = guess;
+    this.guessCount = 0;
   }
 
   determineCurrentPlayer() {
