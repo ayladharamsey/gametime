@@ -15,6 +15,10 @@ class Round {
   startRound1() {
     this.roundCount++
     this.deck.assignCategoriesRound1();
+
+    // if (this.remainingCardCount === 0) {                 //place this within scripts.js
+    //   `This round is over ${this.determineRoundWinner()} is in the lead` 
+    // }
   }
 
   startRound2() {
@@ -28,13 +32,9 @@ class Round {
     this.turn.guessCount = 0;
     this.deck.assignCategoriesRound3();
   }
-  
-  endRound() {
-    if (this.remainingCardCount === 0 && this.roundCount !== 3) {
-      this.startRound()
-    } else {
-      game.endGame();
-    } 
+
+  determineRoundWinner() {
+
   }
   
 

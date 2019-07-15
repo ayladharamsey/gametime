@@ -20,7 +20,7 @@ class Turn {
 
   }
 
-  trackPlayerScore() {
+  changePlayerScore() {
 
   }
 
