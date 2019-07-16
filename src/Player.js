@@ -5,7 +5,9 @@ class Player {
     this.playerWager = playerWager;
   }
   manageWagers() {
-
+    if (this.playerScore > 5) {
+      this.canWager = true;
+    }
   }
 }
 
