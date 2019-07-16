@@ -8,6 +8,7 @@ class Deck {
   }
 
 
+
   assignCategoriesRound1() {
     this.roundCategories = this.randomCategories.slice(0, 4)
     this.assignCards();
