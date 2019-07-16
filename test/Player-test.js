@@ -6,7 +6,7 @@ describe('player', () => {
   let player;
 
   beforeEach(() => {
-    player = new Player();
+    player = new Player(100, 'Emily', 6);
   });
 
   it('should be a function', () => {
@@ -17,8 +17,9 @@ describe('player', () => {
     expect(player).to.be.a.instanceOf(Player);
   });
 
-  it.skip("should have a minimium value of 5 to wage", () => {
-    expect(player.playerWager).to.be.at.least(5);
+  it("should have a minimium value of 5 to wage", () => {
+    player.manageWagers();
+    expect(player.canWager).to.equal(true);
   });
 
   it.skip("should have a maximum value of the highest point value on the board or the current player's total score", () => {

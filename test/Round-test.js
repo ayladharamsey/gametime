@@ -45,12 +45,8 @@ describe('Round', () => {
     expect(round.category).to.equal(10);
   }); 
 
-  it.skip('should return a random number between 1 and 16', () => {
-    expect(round.generateRandomDailyDoubleCard()).to.equal();
-  });
-
   it.skip('should return a second random number if second round', () => {
-    expect(round.generateRandomDailyDoubleCard2()).to.equal();
+    expect(round.compareDailyDoubleValues()).to.equal();
   });
 
   it.skip('should return the point value of the daily double', () => {

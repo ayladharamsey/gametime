@@ -6,8 +6,8 @@ class Round {
     this.turn = turn;
     this.deck = deck;
     this.roundCount = 0;
-    this.dailyDoubleOne;
-    this.dailyDoubleTwo;
+    this.dailyDouble1 = Math.floor(Math.random() * 15) + 1;
+    this.dailyDouble2 = Math.floor(Math.random() * 15) + 1;
     this.currentCardSet = deck.cardSet;
     this.remainingCardCount = 16;
   }
@@ -36,13 +36,10 @@ class Round {
   determineRoundWinner() {
 
   }
-  
 
-  generateRandomDailyDoubleCard() {
-  }
-
-  generateRandomDailyDoubleCard2() {
-
+  compareDailyDoubleValues() {
+    if (this.dailyDouble1 === this.dailyDouble2) {
+      this.dailyDouble2 = this.dailyDouble1 + 1;
   }
 
   determineDailyDoublePointValue() {

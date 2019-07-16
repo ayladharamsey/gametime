@@ -34,8 +34,7 @@ class Deck {
     pointValues.forEach((value, index1) => {
       finalCardSet.push(randomCardSet.map(nestedArray => nestedArray.find(ely => ely.pointValue === pointValues[index1])))
     })
-    this.cardSet = finalCardSet
-
+    this.cardSet = finalCardSet;
   }
 
 
