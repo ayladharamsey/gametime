@@ -1,20 +1,17 @@
 import Game from "./Game";
 
-
 class Round {
-  constructor(turn, deck) {
-    this.turn = turn;
-    this.deck = deck;
+  constructor() {
     this.roundCount = 0;
-    this.dailyDoubleOne;
-    this.dailyDoubleTwo;
-    this.currentCardSet = deck.cardSet;
+    this.dailyDouble1 = Math.floor(Math.random() * 15) + 1;
+    this.dailyDouble2 = Math.floor(Math.random() * 15) + 1;
+    this.currentCardSet = game.cardSet;
     this.remainingCardCount = 16;
   }
 
   startRound1() {
     this.roundCount++
-    this.deck.assignCategoriesRound1();
+    this.game.assignCategoriesRound1();
 
     // if (this.remainingCardCount === 0) {                 //place this within scripts.js
     //   `This round is over ${this.determineRoundWinner()} is in the lead` 
@@ -23,26 +20,29 @@ class Round {
 
   startRound2() {
     this.roundCount++
-    this.turn.guessCount = 0;
-    this.deck.assignCategoriesRound2();
+    this.game.assignCategoriesRound2();
   }
 
   startRound3() {
     this.roundCount++
-    this.turn.guessCount = 0;
-    this.deck.assignCategoriesRound3();
+    this.game.assignCategoriesRound3();
   }
 
   determineRoundWinner() {
 
   }
-  
-
-  generateRandomDailyDoubleCard() {
-  }
 
   generateRandomDailyDoubleCard2() {
+    if (this.dailyDouble1 === this.dailyDouble2) {
+      this.dailyDouble2 = this.dailyDouble1 + 1;
+    }
+    return; 
+  }
 
+  findDailyDouble() {
+    if (this.dailyDouble1 === this.remainingCardCount) {
+      this.player.canWager = true;
+    }
   }
 
   determineDailyDoublePointValue() {
@@ -55,10 +55,6 @@ class Round {
 
   removeClickedCategoriesFromArray() {
 
-  }
-
-  manageDailyDoublePerRound() {
-    
   }
 }
 
