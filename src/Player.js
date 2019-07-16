@@ -6,7 +6,9 @@ class Player {
     this.currentGuess = currentGuess;
   }
   manageWagers() {
-
+    if (this.playerScore > 5) {
+      this.canWager = true;
+    }
   }
 }
 
