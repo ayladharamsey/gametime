@@ -13,35 +13,35 @@ $('.start-game-button').on('click', function(e) {
   $('.main-page').show()
 });
 
-// $(document).ready(() => {
-  // setTimeout(function() {
+$(document).ready(() => {
+  setTimeout(function() {
 
-    // $('.card').removeAttr('')
-//     var game = new Game(data)
-//     game.assignCategoriesRound1()
-//     game.roundCategories.forEach( (cat, index) => {
-//       $(`#category-name-${index + 1}`).html(cat[0])
-//     })
-//     game.cardSet.forEach(el => el.forEach( (card, index) => {
-//       $(`#category-${index + 1}-${card.pointValue.toString()}`).html(card.question)
-//     }))
+    $('.card').removeAttr('')
+    var game = new Game(data)
+    game.assignCategoriesRound1()
+    game.roundCategories.forEach( (cat, index) => {
+      $(`#category-name-${index + 1}`).html(cat[0])
+    })
+    game.cardSet.forEach(el => el.forEach( (card, index) => {
+      $(`#category-${index + 1}-${card.pointValue.toString()}`).html(card.question)
+    }))
 
-//     var answer
-//     $(document).on( "click", function(e) {
-//       var question = $( e.target ).closest( "th" ).text()
-//       game.cardSet.forEach(array1 => array1.find(el => {
-//         if (el.question === question) {
-//           answer = el.answer
-//           console.log(answer)
-//         }
+    var answer
+    $(document).on( "click", function(e) {
+      var question = $( e.target ).closest( "th" ).text()
+      game.cardSet.forEach(array1 => array1.find(el => {
+        if (el.question === question) {
+          answer = el.answer
+          console.log(answer)
+        }
 
-//       }))
+      }))
 
 
-//     });
-//   }, 500);
+    });
+  }, 500);
 
-// });
+});
 
   //DOM.js event methods
   // playerPickCategory() {
