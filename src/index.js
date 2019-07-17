@@ -6,10 +6,17 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
 .then(response => response.json())
 .then(fetchData => data = fetchData.data)
 
+
+$('.start-game-button').on('click', function(e) {
+  e.preventDefault();
+  $('.splash-page').hide();
+  $('.main-page').show()
+});
+
 $(document).ready(() => {
   setTimeout(function() {
 
-    // $('.card').removeAttr('')
+    $('.card').removeAttr('')
     var game = new Game(data)
     game.assignCategoriesRound1()
     game.roundCategories.forEach( (cat, index) => {
