@@ -9,17 +9,12 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
 .then(fetchData => data = fetchData.data)
 .then(data => game = new Game(data))
 
-
-
 setTimeout(() => {
 game.startRound()
 makeBoard(game.round)
 getAnswers(game.round)
 }
 ,500)
-
-
-
 
 var answer
 function getAnswers(round) {
