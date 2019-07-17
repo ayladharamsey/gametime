@@ -20,7 +20,7 @@ $('.start-game-button').on('click', function(e) {
   game.startRound()
   makeBoard(game.round)
   getAnswers(game.round)
-  appendNames(player1, player2, player3)
+  append(player1, player2, player3)
 });
 
 var answer
@@ -45,8 +45,15 @@ function makeBoard(currentRound) {
   }))
 }
 
-function appendNames(player1, player2, player3) {
+function append(player1, player2, player3) {
   $("#player-1-name").text(player1.playerName)
   $("#player-2-name").text(player2.playerName)
   $("#player-3-name").text(player3.playerName)
+  updatePlayerScore(player1, player2, player3)
+}
+
+function updatePlayerScore(player1, player2, player3) {
+  $('#player-1-score').append(player1.playerScore)
+  $('#player-2-score').append(player2.playerScore)
+  $('#player-3-score').append(player3.playerScore)
 }
