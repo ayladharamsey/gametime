@@ -4,3 +4,32 @@ $primary-background: pink;
 body {
   background-color: $primary-background;
 }
+
+table {
+  border: 2px solid black;
+  height: 600px;
+  width: 100%;
+}
+
+th {
+  border: 2px solid black;
+}
+
+#player-1-info {
+  display: inline-block;
+  width: 32%;
+}
+
+#player-2-info {
+  display: inline-block;
+  width: 32%;
+}
+
+#player-3-info {
+  display: inline-block;
+  width: 32%;
+}
+
+.player-forms {
+  display: inline-block;
+}
