@@ -57,3 +57,7 @@ function updatePlayerScore(player1, player2, player3) {
   $('#player-2-score').append(player2.playerScore)
   $('#player-3-score').append(player3.playerScore)
 }
+
+$('.restart-game-button').on('click', () => {
+  location.reload();
+})
