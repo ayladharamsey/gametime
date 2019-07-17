@@ -14,13 +14,13 @@ $('.start-game-button').on('click', function(e) {
   var player1 = new Player($('#player-one-name-input').val())
   var player2 = new Player($('#player-two-name-input').val())
   var player3 = new Player($('#player-three-name-input').val())
-  console.log(player1, player2, player3)
   var game = new Game(data, player1, player2, player3)
   $('.splash-page').hide();
   $('.main-page').show()
   game.startRound()
   makeBoard(game.round)
   getAnswers(game.round)
+  appendNames(player1, player2, player3)
 });
 
 var answer
@@ -45,3 +45,8 @@ function makeBoard(currentRound) {
   }))
 }
 
+function appendNames(player1, player2, player3) {
+  $("#player-1-name").text(player1.playerName)
+  $("#player-2-name").text(player2.playerName)
+  $("#player-3-name").text(player3.playerName)
+}
