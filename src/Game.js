@@ -1,3 +1,5 @@
+import Round from "./Round";
+
 class Game {
   constructor (data) {
     this.categories = data.categories
@@ -6,6 +8,19 @@ class Game {
     this.roundCategories;
     this.cardSet;
     this.playerSet = [];
+    this.currentRound = 0;
+  }
+
+  startRound() {
+    this.currentRound++
+    if (this.currentRound === 1) {
+      this.assignCategoriesRound1()
+      let round = new Round(this.roundCategories, this.cardSet)
+    } else if (this.currentRound === 2) {
+      this.assignCategoriesRound2()
+      let round = new Round(this.roundCategories, this.cardSet)
+    } 
+    // work on round 3 - diff behavior
   }
 
   assignCategoriesRound1() {
@@ -18,10 +33,10 @@ class Game {
     this.assignCards();
   }
 
-  assignCategoriesRound3() {
-    this.roundCategories = this.randomCategories.slice(10)
-    this.assignCards();
-  }
+  // assignCategoriesRound3() {
+  //   this.roundCategories = this.randomCategories.slice(10)
+  //   this.assignCards();
+  // }
 
   assignCards() {
     let pointValues = [100, 200, 300, 400]
@@ -35,9 +50,6 @@ class Game {
       finalCardSet.push(randomCardSet.map(nestedArray => nestedArray.find(ely => ely.pointValue === pointValues[index1])))
     })
     this.cardSet = finalCardSet;
-  }
-
-  startGame() {
   }
 
   determineWinner() {

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import $ from 'jquery';
 import Deck from '../src/Deck.js'
 var data
@@ -35,23 +34,3 @@ $(document).ready(() => {
   }, 500);
 
 });
-=======
-  //DOM.js event methods
-  // playerPickCategory() {
-  // }
-  // playerPickCardValue(valuePicked) {
-  // }
-  //combine with evaluate player guess
-  // changePlayerScore() {
-
-  // }
-  // evaluatePlayersGuesses(playerGuess, correctAnswer) {
-    
-  // }
-//   determineCurrentPlayer() {
-//   }
-
-//   determinePlayersEndOfTurn() {
-//   }
-// }
->>>>>>> master

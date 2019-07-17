@@ -1,15 +1,13 @@
 class Player {
-  constructor(playerScore = 0, playerName, playerWager) {
+  constructor(playerName, playerWager) {
     this.playerScore = playerScore;
     this.playerName = playerName;
     this.playerWager = playerWager;
+    this.guess = guess;
     this.canWager = false;
   }
 
   manageWagers() {
-    if (this.playerScore > 5) {
-      this.canWager = true;
-    }
   }
 }
 

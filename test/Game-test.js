@@ -2,11 +2,17 @@ import chai from 'chai';
 const expect = chai.expect;
 import data from '../src/dataset.js'
 import Game from '../src/Game';
+import Player from '../src/Player.js';
+import Round from '../src/Round.js';
 describe('Game', function() {
 
   let game;
+  let round;
+  // let player;
   beforeEach(() => {
-    game = new Game(data)
+    game = new Game(data);
+    // startRound();
+    // player = new Player();
   });
 
 
