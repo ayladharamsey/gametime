@@ -1,9 +1,9 @@
 class Player {
   constructor(playerName, playerWager) {
-    this.playerScore = playerScore;
+    this.playerScore = 0;
     this.playerName = playerName;
     this.playerWager = playerWager;
-    this.guess = guess;
+    this.guess
     this.canWager = false;
   }
 
