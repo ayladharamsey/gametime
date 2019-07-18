@@ -23,15 +23,14 @@ $('.start-game-button').on('click', function(e) {
   append(player1, player2, player3)
 });
 
-var answer
 function getAnswers(round) {
   $("table").on( "click", function(e) {
     // $( e.target ).closest(".card").show()
     var question = $( e.target ).closest( "th" ).text()
     round.cardSet.forEach(array1 => array1.find(el => {
       if (el.question === question) {
-        answer = el.answer
-        console.log(answer)
+        round.currentCorrectAnswer = el.answer
+        console.log(round)
       }
     }));
   });
