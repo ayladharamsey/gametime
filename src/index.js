@@ -92,7 +92,12 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-2-score").text(`Score: ${player2.playerScore}`);
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
-//Dom-boi
+
+// increasePointValue() {} (only called on Round 2)
+
+//dom-bois
 $(".restart-game-button").on("click", () => {
   location.reload();
 });
+
+// determineCardValueForRounds() {}
