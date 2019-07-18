@@ -5,7 +5,6 @@ class Round {
     this.categories = categories;
     this.cardSet = cardSet;
     this.remainingCardCount = 16;
-    this.currentCorrectAnswer
   }
 
   determineRoundWinner() {}
