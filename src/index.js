@@ -3,11 +3,11 @@ import $ from 'jquery';
 import Game from '../src/Game.js'
 import Player from '../src/Player.js'
 
-var data
+let data
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(response => response.json())
   .then(fetchData => data = fetchData.data)
-  
+
 
 $('.start-game-button').on('click', function(e) {
   e.preventDefault();
@@ -18,8 +18,8 @@ $('.start-game-button').on('click', function(e) {
   $('.splash-page').hide();
   $('.main-page').show()
   game.startRound()
-  makeBoard(game.round)
-  getAnswers(game.round)
+  makeBoard(game.currentRound)
+  getAnswers(game.currentRound)
   append(player1, player2, player3)
 });
 

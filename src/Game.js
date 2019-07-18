@@ -8,18 +8,18 @@ class Game {
     this.roundCategories;
     this.cardSet;
     this.playerSet = [];
-    this.currentRound = 0;
-    this.round
+    this.currentRoundNum = 0;
+    this.currentRound
   }
 
   startRound() {
-    this.currentRound++
-    if (this.currentRound === 1) {
+    this.currentRoundNum++
+    if (this.currentRoundNum === 1) {
       this.assignCategoriesRound1()
-        this.round = new Round(this.roundCategories, this.cardSet)
+        this.currentRound = new Round(this.roundCategories, this.cardSet)
     } else if (this.currentRound === 2) {
       this.assignCategoriesRound2()
-        this.round = new Round(this.roundCategories, this.cardSet)
+        this.currentRound = new Round(this.roundCategories, this.cardSet)
     }
     // work on round 3 - diff behavior
   }
