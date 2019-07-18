@@ -25,7 +25,8 @@ $('.start-game-button').on('click', function(e) {
 
 var answer
 function getAnswers(round) {
-  $(document).on( "click", function(e) {
+  $("table").on( "click", function(e) {
+    // $( e.target ).closest(".card").show()
     var question = $( e.target ).closest( "th" ).text()
     round.cardSet.forEach(array1 => array1.find(el => {
       if (el.question === question) {
@@ -36,12 +37,15 @@ function getAnswers(round) {
   });
 }
 
+
 function makeBoard(currentRound) {
   currentRound.categories.forEach( (cat, index) => {
     $(`#category-name-${index + 1}`).html(cat[0])
   })
   currentRound.cardSet.forEach(el => el.forEach( (card, index) => {
-    $(`#category-${index + 1}-${card.pointValue.toString()}`).html(card.question)
+    $(".card").on( "click", function(e) {
+    $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question)
+  })
   }))
 }
 
