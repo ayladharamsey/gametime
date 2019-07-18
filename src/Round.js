@@ -1,14 +1,12 @@
 class Round {
   constructor(categories, cardSet) {
     this.dailyDouble1 = Math.floor(Math.random() * 15) + 1;
-    this.dailyDouble2 = Math.floor(Math.random() * 15) + 1;
+    // this.dailyDouble2 = Math.floor(Math.random() * 15) + 1;
     this.categories = categories;
     this.cardSet = cardSet;
     this.remainingCardCount = 16;
     
   }
-
-  determineRoundWinner() {}
 
   generateRandomDailyDoubleCard2() {
     if (this.dailyDouble1 === this.dailyDouble2) {
@@ -22,12 +20,5 @@ class Round {
       this.player.canWager = true;
     }
   }
-
-  determineDailyDoublePointValue() {}
-
-  determineCardValueForRounds() {}
-
-  removeClickedCategoriesFromArray() {}
-}
 
 export default Round;

@@ -9,6 +9,10 @@ class Player {
 
   manageWagers() {
   }
+  
+  returnWagerPoints() {
+    //playerWager * 2
+  }
 }
 
 export default Player;
