@@ -44,7 +44,7 @@ describe('Game', function() {
     expect(game.roundCategories.length).to.eql(4)
   });
 
-  it('should get 4 sets of cards relating to categories should initially have roundCategories undefined, but have a length of 4 when startRound method is invoke', () => {
+  it('should have cardSet intially undefined, but given a length of 4 (with 4 items in each) when startRound method is invoked', () => {
     expect(game.cardSet).to.equal(undefined)
     game.startRound()
     expect(game.cardSet.length).to.eql(4)
@@ -56,6 +56,12 @@ describe('Game', function() {
 
   it('should initially have a playerSet property of undefined', () => {
     expect(game.playerSet).to.equal(undefined)
+  })
+
+  it('should initially have a currentRoundNum property of 0 that increments when startRound is invoked', () => {
+    expect(game.currentRoundNum).to.equal(0)
+    game.startRound()
+    expect(game.currentRoundNum).to.equal(1)
   })
 
 
