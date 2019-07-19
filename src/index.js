@@ -8,6 +8,16 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(response => response.json())
   .then(fetchData => (data = fetchData.data));
 
+$(document).ready(function() {
+  $(':input[type="submit"]').prop('disabled', true);
+  $('input[type="text"]').keyup(function() {
+    if ($('#player-one-name-input').val()!= '' && $('#player-two-name-input').val()!= '' 
+        && $('#player-three-name-input').val()!= '') {
+      $(':input[type="submit"]').prop('disabled', false);
+    }
+  });
+});
+
 $(".start-game-button").on("click", function(e) {
   e.preventDefault();
   var player1 = new Player($("#player-one-name-input").val());
@@ -41,12 +51,10 @@ function assignGuess(game) {
 
 function guessManager(game, player1, player2, player3) {
   $(`#player-1-answer-button`).on("click", function(e) {
-    console.log("hey bish");
     e.preventDefault();
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
-    console.log(game.playerSet[game.currentPlayer]);
   });
 }
 
@@ -92,6 +100,8 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-2-score").text(`Score: ${player2.playerScore}`);
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
+
+
 
 // increasePointValue() {} (only called on Round 2)
 

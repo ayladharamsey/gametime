@@ -20,5 +20,6 @@ class Round {
       this.player.canWager = true;
     }
   }
+}
 
 export default Round;
