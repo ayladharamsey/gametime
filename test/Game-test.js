@@ -25,32 +25,28 @@ describe('Game', function() {
   });
 
   it('should hold data', () => {
-    expect(game.categories).to.eql({
-      'unitedStatesHistory': 1,
-      'lifeSciences': 2,
-      'publicHealth': 3,
-      'educationJargon': 4,
-      'nameThatBoardGame': 5,
-      'americanLiterature': 6,
-      'biographies': 7,
-      'americanCities': 8,
-      'food': 9,
-      'cableTV': 10
-    })
+    expect(Object.keys(game.categories).length).to.eql(10);
   });
 
   it('should have a cards property and hold cards', () => {
-      expect(game.cards.length).to.eql(114)
+    expect(game.cards.length).to.eql(114)
+  });
+
+  it('should randomize the order of categories', () => {
+    expect(Object.keys(game.randomCategories)).to.not.eql(
+      ["unitedStatesHistory", "lifeScience", "publicHealth", "educationJargon", 
+        "nameThatBoardGame", "americanLiterature", "biographies", "americanCities", "food", "cableTV"])
   });
 
   it('should get 4 categories', () => {
-      game.assignCategoriesRound1()
-      expect(game.roundCategories.length).to.eql(4)
+    game.assignCategoriesRound1()
+    expect(game.roundCategories.length).to.eql(4)
   });
 
   it('should get 4 sets of cards relating to categories', () => {
-      game.assignCategoriesRound1()
-      expect(game.cardSet.length).to.eql(4)
+    game.assignCategoriesRound1()
+    expect(game.cardSet.length).to.eql(4)
+    expect(game.cardSet[0].length).to.eql(4)
   });
 
 
