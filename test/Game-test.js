@@ -32,23 +32,31 @@ describe('Game', function() {
     expect(game.cards.length).to.eql(114)
   });
 
-  it('should randomize the order of categories', () => {
+  it('should have a randomCategories property that randomizes the order of categories', () => {
     expect(Object.keys(game.randomCategories)).to.not.eql(
       ["unitedStatesHistory", "lifeScience", "publicHealth", "educationJargon", 
         "nameThatBoardGame", "americanLiterature", "biographies", "americanCities", "food", "cableTV"])
   });
 
-  it('should get 4 categories', () => {
-    game.assignCategoriesRound1()
+  it('should initially have roundCategories undefined, but have a length of 4 when startRound method is invoked', () => {
+    expect(game.roundCategories).to.equal(undefined)
+    game.startRound()
     expect(game.roundCategories.length).to.eql(4)
   });
 
-  it('should get 4 sets of cards relating to categories', () => {
-    game.assignCategoriesRound1()
+  it('should get 4 sets of cards relating to categories should initially have roundCategories undefined, but have a length of 4 when startRound method is invoke', () => {
+    expect(game.cardSet).to.equal(undefined)
+    game.startRound()
     expect(game.cardSet.length).to.eql(4)
     expect(game.cardSet[0].length).to.eql(4)
+    expect(game.cardSet[1].length).to.eql(4)
+    expect(game.cardSet[2].length).to.eql(4)
+    expect(game.cardSet[3].length).to.eql(4)
   });
 
+  it('should initially have a playerSet property of undefined', () => {
+    expect(game.playerSet).to.equal(undefined)
+  })
 
 
 });
