@@ -13,6 +13,7 @@ class Game {
     this.currentRound;
     this.currentCard;
     this.currentPlayer = 0
+    this.block;
   }
 
   startRound() {

@@ -11,7 +11,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
 $(document).ready(function() {
   $(':input[type="submit"]').prop('disabled', true);
   $('input[type="text"]').keyup(function() {
-    if ($('#player-one-name-input').val()!= '' && $('#player-two-name-input').val()!= '' 
+    if ($('#player-one-name-input').val()!= '' && $('#player-two-name-input').val()!= ''
         && $('#player-three-name-input').val()!= '') {
       $(':input[type="submit"]').prop('disabled', false);
     }
@@ -55,14 +55,14 @@ function guessManager(game, player1, player2, player3) {
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
+    $(`#${game.block}`).text("DONE")
   });
 }
 
 function getCards(round, game) {
   $("table").on("click", function(e) {
-    var question = $(e.target)
-      .closest("th")
-      .text();
+    var question = $(e.target).closest("th").text();
+    game.block = event.target.id
     round.cardSet.forEach(array1 =>
       array1.find(el => {
         if (el.question === question) {
@@ -81,9 +81,7 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
-        $(e.target)
-          .closest($(`#category-${index + 1}-${card.pointValue.toString()}`))
-          .text(card.question);
+        $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
       });
     })
   );
