@@ -2,6 +2,8 @@ import "./css/base.scss";
 import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
+import brick from "../src/brick.png"
+
 
 let data;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
@@ -55,7 +57,7 @@ function guessManager(game, player1, player2, player3) {
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
-    $(`#${game.block}`).text("DONE")
+     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
   });
 }
 
