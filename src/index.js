@@ -58,6 +58,7 @@ function guessManager(game, player1, player2, player3) {
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
      $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
+     $(`#${game.block}`).off()
   });
 }
 
