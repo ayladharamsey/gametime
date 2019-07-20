@@ -1,5 +1,6 @@
 import Player from "./Player"
 import Round from "./Round";
+import FinalRound from "./FinalRound"
 
 class Game {
   constructor (data, playerSet) {
@@ -25,6 +26,9 @@ class Game {
     } else if (this.currentRoundNum === 2) {
       this.assignCategoriesRound2()
       this.currentRound = new Round(this.currentRoundNum, this.roundCategories, this.cardSet)
+    } else if (this.currentRoundNum === 3) {
+      this.assignCategoriesRound3()
+      this.currentRound = new FinalRound(this.currentRoundNum, this.roundCategories, this.cardSet)
     }
     // work on round 3 - diff behavior
   }
@@ -41,10 +45,10 @@ class Game {
     this.assignCards();
   }
 
-  // assignCategoriesRound3() {
-  //   this.roundCategories = this.randomCategories.slice(10)
-  //   this.assignCards();
-  // }
+  assignCategoriesRound3() {
+    this.roundCategories = this.randomCategories.slice(10)
+    this.assignCards();
+  }
 
   assignCards() {
     let pointValues = [100, 200, 300, 400]
