@@ -2,11 +2,23 @@ import "./css/base.scss";
 import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
+import brick from "../src/brick.png"
+
 
 let data;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(response => response.json())
   .then(fetchData => (data = fetchData.data));
+
+$(document).ready(function() {
+  $(':input[type="submit"]').prop('disabled', true);
+  $('input[type="text"]').keyup(function() {
+    if ($('#player-one-name-input').val()!= '' && $('#player-two-name-input').val()!= ''
+        && $('#player-three-name-input').val()!= '') {
+      $(':input[type="submit"]').prop('disabled', false);
+    }
+  });
+});
 
 $(".start-game-button").on("click", function(e) {
   e.preventDefault();
@@ -46,20 +58,21 @@ function guessManager(game, player1, player2, player3) {
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
-    console.log(game.playerSet[game.currentPlayer]);
+    $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
+     $(`#${game.block}`).off()
   });
 }
 
 function getCards(round, game) {
-  $("table").on("click", function(e) {
-    var question = $(e.target)
-      .closest("th")
-      .text();
+  $(".card").on("click", function(e) {
+    var question = $(e.target).closest("th").text();
+    game.block = event.target.id
     round.cardSet.forEach(array1 =>
       array1.find(el => {
         if (el.question === question) {
           game.currentCard = el;
           console.log(game.currentCard);
+          console.log(game.block)
         }
       })
     );
@@ -73,9 +86,7 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
-        $(e.target)
-          .closest($(`#category-${index + 1}-${card.pointValue.toString()}`))
-          .text(card.question);
+        $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
       });
     })
   );
