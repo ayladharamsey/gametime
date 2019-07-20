@@ -48,13 +48,6 @@ describe('Round', () => {
     expect(round.categories.length).to.eql(4);
   }); 
 
-  it('should generate a second dailyDouble if the currentRoundNum is 2', () => {
-    game.startRound()
-    round = new Round(game)
-    round.generateRandomDailyDoubleCard2()
-    expect(round.dailyDouble2).to.not.equal(undefined);
-  }); 
-
   it('should have receive a cardSet from Game with a length of 4 (with 4 items in each)', () => {
     expect(round.cardSet.length).to.eql(4)
     expect(round.cardSet[0].length).to.eql(4)
@@ -62,6 +55,15 @@ describe('Round', () => {
     expect(round.cardSet[2].length).to.eql(4)
     expect(round.cardSet[3].length).to.eql(4)
   });
+
+  it('should generate a second dailyDouble in Round 2; it should not equal dailyDouble1', () => {
+    expect(round.dailyDouble2).to.equal(undefined)
+    game.startRound()
+    round = new Round(game)
+    round.generateRandomDailyDoubleCard2()
+    expect(round.dailyDouble2).to.not.equal(undefined);
+    expect(round.dailyDouble2).to.not.equal(round.dailyDouble1);
+  }); 
 
   // it.skip('should end game once array length is 0', () => {
   //   expect(round.endGame()).to.equal();
