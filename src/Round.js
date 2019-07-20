@@ -17,7 +17,6 @@ class Round {
       this.dailyDouble2 = Math.floor(Math.random() * 15) + 2
     }
   }
-}
 
   // findDailyDouble() {
   //   if (this.dailyDouble1 === this.remainingCardCount) {
