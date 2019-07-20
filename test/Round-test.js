@@ -28,7 +28,13 @@ describe('Round', () => {
   it('should be instantiated with a game object argument', () => {
     expect(round.game).to.not.equal(undefined);
   }); 
-  
+
+  it('should use a roundCounter based on currentRoundNum in Game', () => {
+    expect(round.roundCounter).to.equal(1);
+    game.startRound()
+    round = new Round(game)
+    expect(round.roundCounter).to.equal(2);
+  }); 
 
   it('should generate a random dailyDouble1 value', () => {
     expect(round.dailyDouble1).to.not.equal(undefined);
@@ -45,10 +51,9 @@ describe('Round', () => {
   it('should generate a second dailyDouble if the currentRoundNum is 2', () => {
     game.startRound()
     round = new Round(game)
-    expect(round.generateRandomDailyDoubleCard2()).to.not.equal(undefined);
+    round.generateRandomDailyDoubleCard2()
+    expect(round.dailyDouble2).to.not.equal(undefined);
   }); 
-
-
 
   it('should have receive a cardSet from Game with a length of 4 (with 4 items in each)', () => {
     expect(round.cardSet.length).to.eql(4)

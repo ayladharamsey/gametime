@@ -12,9 +12,8 @@ class Round {
   generateRandomDailyDoubleCard2() {
     if (this.roundCounter === 2) {
       this.dailyDouble2 = Math.floor(Math.random() * 15) + 1
-      console.log(this.dailyDouble2)
     }
-    if (this.dailyDouble2 ===  this.dailyDouble1) {
+    if (this.dailyDouble2 === this.dailyDouble1) {
       this.dailyDouble2 = Math.floor(Math.random() * 15) + 2
     }
   }
