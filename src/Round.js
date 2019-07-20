@@ -1,25 +1,28 @@
 class Round {
-  constructor(categories, cardSet) {
+  constructor(game) {
+    this.game = game;
+    this.roundCounter = game.currentRoundNum;
     this.dailyDouble1 = Math.floor(Math.random() * 15) + 1;
-    // this.dailyDouble2 = Math.floor(Math.random() * 15) + 1;
-    this.categories = categories;
-    this.cardSet = cardSet;
+    this.dailyDouble2;
+    this.categories = game.roundCategories;
+    this.cardSet = game.cardSet;
     this.remainingCardCount = 16;
-    
   }
 
   generateRandomDailyDoubleCard2() {
-    if (this.dailyDouble1 === this.dailyDouble2) {
-      this.dailyDouble2 = this.dailyDouble1 + 1;
+    if (this.roundCounter === 2) {
+      this.dailyDouble2 = Math.floor(Math.random() * 15) + 1
     }
-    return;
+    if (this.dailyDouble2 === this.dailyDouble1) {
+      this.dailyDouble2 = Math.floor(Math.random() * 15) + 2
+    }
   }
 
-  findDailyDouble() {
-    if (this.dailyDouble1 === this.remainingCardCount) {
-      this.player.canWager = true;
-    }
-  }
+  // findDailyDouble() {
+  //   if (this.dailyDouble1 === this.remainingCardCount) {
+  //     this.player.canWager = true;
+  //   }
+  // }
 }
 
 export default Round;

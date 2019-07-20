@@ -53,6 +53,7 @@ function assignGuess(game) {
 
 function guessManager(game, player1, player2, player3) {
   $(`#player-1-answer-button`).on("click", function(e) {
+    console.log("hey bish");
     e.preventDefault();
     assignGuess(game);
     evaluateGuess(game);
@@ -102,8 +103,6 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-2-score").text(`Score: ${player2.playerScore}`);
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
-
-
 
 // increasePointValue() {} (only called on Round 2)
 
