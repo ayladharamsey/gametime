@@ -12,7 +12,7 @@ class Game {
     this.currentRoundNum = 0;
     this.currentRound;
     this.currentCard;
-    this.currentPlayer = 0
+    this.currentPlayer = 0;
   }
 
   startRound() {
