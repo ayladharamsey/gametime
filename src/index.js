@@ -47,8 +47,7 @@ function evaluateGuess(game) {
 
 function assignGuess(game) {
   game.playerSet[game.currentPlayer].guess = $(
-    `#player-${game.currentPlayer + 1}-answer-input`
-  ).val();
+    `#player-1-answer-input`).val();
 }
 
 function guessManager(game, player1, player2, player3) {
@@ -59,6 +58,8 @@ function guessManager(game, player1, player2, player3) {
     updatePlayerScore(player1, player2, player3);
     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
     $(`#${game.block}`).off()
+    $(".question-and-answer").hide()
+    $("table").show()
   });
 }
 
@@ -70,8 +71,9 @@ function getCards(round, game) {
       array1.find(el => {
         if (el.question === question) {
           game.currentCard = el;
-          console.log(game.currentCard);
           console.log(game.block)
+          $(".question").text(game.currentCard.question)
+          console.log(game.currentCard);
         }
       })
     );
@@ -86,9 +88,8 @@ function makeBoard(currentRound) {
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
         $(".question-and-answer").show()
+        $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
         $("table").hide()
-        $(".question").text(card.question)
-        // $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
       });
     })
   );
