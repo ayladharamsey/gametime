@@ -37,4 +37,14 @@ th {
   height: 400px;
   width: 500px;
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.question {
+  text-align: center;
+  font-size: 2em
 }

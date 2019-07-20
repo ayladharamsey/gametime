@@ -85,7 +85,10 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
-        $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
+        $(".question-and-answer").show()
+        $("table").hide()
+        $(".question").text(card.question)
+        // $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
       });
     })
   );
