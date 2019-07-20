@@ -57,13 +57,13 @@ function guessManager(game, player1, player2, player3) {
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
-     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
+    $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
      $(`#${game.block}`).off()
   });
 }
 
 function getCards(round, game) {
-  $("table").on("click", function(e) {
+  $(".card").on("click", function(e) {
     var question = $(e.target).closest("th").text();
     game.block = event.target.id
     round.cardSet.forEach(array1 =>
@@ -71,6 +71,7 @@ function getCards(round, game) {
         if (el.question === question) {
           game.currentCard = el;
           console.log(game.currentCard);
+          console.log(game.block)
         }
       })
     );
