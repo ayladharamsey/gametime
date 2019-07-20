@@ -13,8 +13,8 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
 $(document).ready(function() {
   $(':input[type="submit"]').prop('disabled', true);
   $('input[type="text"]').keyup(function() {
-    if ($('#player-one-name-input').val()!= '' && $('#player-two-name-input').val()!= ''
-        && $('#player-three-name-input').val()!= '') {
+    if ($('#player-one-name-input').val() !== '' && $('#player-two-name-input').val() !== ''
+        && $('#player-three-name-input').val() !== '') {
       $(':input[type="submit"]').prop('disabled', false);
     }
   });
@@ -53,13 +53,12 @@ function assignGuess(game) {
 
 function guessManager(game, player1, player2, player3) {
   $(`#player-1-answer-button`).on("click", function(e) {
-    console.log("hey bish");
     e.preventDefault();
     assignGuess(game);
     evaluateGuess(game);
     updatePlayerScore(player1, player2, player3);
     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
-     $(`#${game.block}`).off()
+    $(`#${game.block}`).off()
   });
 }
 
