@@ -41,7 +41,6 @@ function assignGuess(game) {
 
 function guessManager(game, player1, player2, player3) {
   $(`#player-1-answer-button`).on("click", function(e) {
-    console.log("hey bish");
     e.preventDefault();
     assignGuess(game);
     evaluateGuess(game);

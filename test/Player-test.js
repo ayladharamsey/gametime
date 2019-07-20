@@ -6,7 +6,7 @@ describe('Player', () => {
   let player;
 
   beforeEach(() => {
-    player = new Player(100, 'Emily', 6);
+    player = new Player('Jev');
   });
 
   it('should be a function', () => {
@@ -15,6 +15,14 @@ describe('Player', () => {
 
   it("should be an instance of a Player", () => {
     expect(player).to.be.a.instanceOf(Player);
+  });
+
+  it("should begin with a playerScore of 0", () => {
+    expect(player.playerScore).to.equal(0);
+  });
+
+  it("should take in a playerName", () => {
+    expect(player.playerName).to.equal("Jev");
   });
 
   // it("should have a minimium value of 5 to wage", () => {

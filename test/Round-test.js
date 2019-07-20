@@ -6,15 +6,15 @@ import Game from '../src/Game.js';
 const expect = chai.expect;
 
 describe('Round', () => {
-  let round; 
-  let player;
+  // let player;
   let game;
+  let round;
 
   beforeEach(() => {
     game = new Game(data)
     game.startRound()
     // player = new Player('bill')
-    round = new Round(game)
+    round = game.currentRound
   });
 
   it('should be a function', () => {
@@ -25,23 +25,15 @@ describe('Round', () => {
     expect(round).to.be.an.instanceOf(Round);
   }); 
 
-  it('should be instantiated with a game object argument', () => {
-    expect(round.game).to.not.equal(undefined);
-  }); 
-
   it('should use a roundCounter based on currentRoundNum in Game', () => {
     expect(round.roundCounter).to.equal(1);
     game.startRound()
-    round = new Round(game)
-    expect(round.roundCounter).to.equal(2);
+    const round2 = game.currentRound
+    expect(round2.roundCounter).to.equal(2);
   }); 
 
   it('should generate a random dailyDouble1 value', () => {
     expect(round.dailyDouble1).to.not.equal(undefined);
-  }); 
-
-  it('should have dailyDouble2 as initially undefined', () => {
-    expect(round.dailyDouble2).to.equal(undefined);
   }); 
 
   it('should receive the categories selected for the round per Game', () => {
@@ -59,7 +51,7 @@ describe('Round', () => {
   it('should generate a second dailyDouble in Round 2; it should not equal dailyDouble1', () => {
     expect(round.dailyDouble2).to.equal(undefined)
     game.startRound()
-    round = new Round(game)
+    round = game.currentRound
     round.generateRandomDailyDoubleCard2()
     expect(round.dailyDouble2).to.not.equal(undefined);
     expect(round.dailyDouble2).to.not.equal(round.dailyDouble1);
