@@ -71,9 +71,10 @@ function getCards(round, game) {
       array1.find(el => {
         if (el.question === question) {
           game.currentCard = el;
-          console.log(game.block)
           $(".question").text(game.currentCard.question)
+          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
           console.log(game.currentCard);
+          console.log(game.currentPlayer)
         }
       })
     );
