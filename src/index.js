@@ -120,4 +120,8 @@ $(".restart-game-button").on("click", () => {
   location.reload();
 });
 
+$('.card').on('click', () => {
+  $('#player-1-answer-input').val('')
+})
+
 // determineCardValueForRounds() {}
