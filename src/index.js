@@ -35,15 +35,20 @@ $(".start-game-button").on("click", function(e) {
   updatePlayerName(player1, player2, player3);
 });
 
+
 function evaluateGuess(game) {
   if (game.currentPlayer === 2 && game.currentCard.answer !== game.playerSet[game.currentPlayer].guess) {
+    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
   } else if (game.currentCard.answer === game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
   } else {
+    (game.currentCard.answer !== game.playerSet[game.currentPlayer].guess) 
+    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
 }
+
 
 function assignGuess(game) {
   game.playerSet[game.currentPlayer].guess = $(
