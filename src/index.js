@@ -37,13 +37,13 @@ $(".start-game-button").on("click", function(e) {
 
 
 function evaluateGuess(game) {
-  if (game.currentPlayer === 2 && game.currentCard.answer !== game.playerSet[game.currentPlayer].guess) {
+  if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
-  } else if (game.currentCard.answer === game.playerSet[game.currentPlayer].guess) {
+  } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
   } else {
-    (game.currentCard.answer !== game.playerSet[game.currentPlayer].guess) 
+    (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) 
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
@@ -78,8 +78,10 @@ function getCards(round, game) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
           $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
-          console.log(game.currentCard);
-          console.log(game.currentPlayer)
+          console.log(game.currentCard)
+          $('.card').on('click', () => {
+            game.currentCard.answer.toLowerCase()
+          })
         }
       })
     );
