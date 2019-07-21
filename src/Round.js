@@ -1,6 +1,6 @@
 class Round {
   constructor(roundCounter, categories, cardSet) {
-    this.roundCounter = roundCounter
+    this.roundCounter = roundCounter;
     this.dailyDouble1 = Math.floor(Math.random() * 15) + 1;
     this.dailyDouble2;
     this.categories = categories;

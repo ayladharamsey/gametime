@@ -25,7 +25,7 @@ $(".start-game-button").on("click", function(e) {
   var player1 = new Player($("#player-one-name-input").val());
   var player2 = new Player($("#player-two-name-input").val());
   var player3 = new Player($("#player-three-name-input").val());
-  var game = new Game(data, [player1, player2, player3]);
+  var game = new Game(data, [player1, player2, player3], round);
   $(".splash-page").hide();
   $(".main-page").show();
   game.startRound();
@@ -78,7 +78,6 @@ function getCards(round, game) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
           $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
-          console.log(game.currentCard)
           $('.card').on('click', () => {
             game.currentCard.answer.toLowerCase()
           })

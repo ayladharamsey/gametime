@@ -2,7 +2,7 @@ import Player from "./Player"
 import Round from "./Round";
 
 class Game {
-  constructor (data, playerSet) {
+  constructor (data, playerSet, roundObj) {
     this.categories = data.categories
     this.cards = data.clues;
     this.randomCategories = Object.entries(this.categories).sort((a, b) => 0.5 - Math.random())
@@ -12,8 +12,9 @@ class Game {
     this.currentRoundNum = 0;
     this.currentRound;
     this.currentCard;
-    this.currentPlayer = 0
+    this.currentPlayer = 0;
     this.block;
+    this.roundObj = roundObj;
 
   }
 
@@ -29,7 +30,20 @@ class Game {
     // work on round 3 - diff behavior
   }
 
-  // determineRoundWinner() {}
+  endRound1And2(round) {
+    if (this.currentRoundNum === 1 && round.remainingCardCount === 0) {
+      this.currentRoundNum++
+      this.determineRoundWinner();
+    }
+
+    if (this.currentRoundNum === 2 && round.remainingCardCount === 0) {
+      this.currentRoundNum++
+      this.determineRoundWinner();
+    }
+
+  }
+
+  determineRoundWinner() {}
 
   assignCategoriesRound1() {
     this.roundCategories = this.randomCategories.slice(0, 4)
