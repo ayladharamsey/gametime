@@ -3,6 +3,7 @@ import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
 import brick from "../src/brick.png"
+import Round from "./Round";
 
 
 let data;
@@ -25,7 +26,7 @@ $(".start-game-button").on("click", function(e) {
   var player1 = new Player($("#player-one-name-input").val());
   var player2 = new Player($("#player-two-name-input").val());
   var player3 = new Player($("#player-three-name-input").val());
-  var game = new Game(data, [player1, player2, player3], round);
+  var game = new Game(data, [player1, player2, player3]);
   $(".splash-page").hide();
   $(".main-page").show();
   game.startRound();
@@ -40,13 +41,17 @@ function evaluateGuess(game) {
   if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
+    game.currentRound.remainingCardCount--;
   } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
+    game.currentRound.remainingCardCount--;
   } else {
     (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) 
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
+    game.currentRound.remainingCardCount-- ;
   }
+  game.endRound1And2(game.currentRound.remainingCardCount)
 }
 
 
@@ -69,6 +74,7 @@ function guessManager(game, player1, player2, player3) {
 }
 
 function getCards(round, game) {
+  game.endRound1And2()
   $(".card").on("click", function(e) {
     var question = $(e.target).closest("th").text();
     game.block = event.target.id
