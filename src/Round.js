@@ -1,3 +1,5 @@
+import Game from "./Game";
+
 class Round {
   constructor(roundCounter, categories, cardSet) {
     this.roundCounter = roundCounter;
@@ -6,6 +8,16 @@ class Round {
     this.categories = categories;
     this.cardSet = cardSet;
     this.remainingCardCount = 16;
+    this.roundWinner;
+
+  }
+
+  determineRoundWinner(players) {
+    let winners = [...players]
+    this.roundWinner = winners.sort((a, b) => {
+      return b.playerScore - a.playerScore
+    })
+    console.log(this.roundWinner[0])
   }
 
   // generateRandomDailyDoubleCard2() {

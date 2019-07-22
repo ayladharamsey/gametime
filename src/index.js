@@ -3,7 +3,9 @@ import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
 import brick from "../src/brick.png"
+import Round from "./Round";
 var tableClone = $("table").clone()
+
 
 
 let data;
@@ -38,7 +40,7 @@ $(".start-game-button").on("click", function(e) {
 });
 
 
-function evaluateGuess(game) {
+function evaluateGuess(game, round) {
   if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
@@ -49,6 +51,8 @@ function evaluateGuess(game) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
+  // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
+
 }
 
 
@@ -62,7 +66,7 @@ function guessManager(game, player1, player2, player3, round) {
     e.preventDefault();
     round.remainingCardCount --
     assignGuess(game);
-    evaluateGuess(game);
+    evaluateGuess(game, round);
     updatePlayerScore(player1, player2, player3);
     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
     $(`#${game.block}`).off()
@@ -82,7 +86,6 @@ function getCards(round, game) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
           $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
-          console.log(game.currentCard)
           $('.card').on('click', () => {
             game.currentCard.answer.toLowerCase()
           })
@@ -119,6 +122,13 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
+ function displayRoundWinner(round) {
+   if (round.remainingCardCount === 0) {
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+   }
+ }
+
 // increasePointValue() {} (only called on Round 2)
 
 //dom-bois
@@ -130,8 +140,9 @@ $('.card').on('click', () => {
   $('#player-1-answer-input').val('')
 })
 
- function endRound(round, game) {
-   if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
+function endRound(round, game) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
+    round.determineRoundWinner(game.playerSet)
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
       $(this).text($(this).text() * 2)
@@ -139,6 +150,7 @@ $('.card').on('click', () => {
     game.startRound()
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
+    displayRoundWinner(round)
   }
 }
 
