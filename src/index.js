@@ -130,19 +130,16 @@ $('.card').on('click', () => {
 })
 
  function endRound(round, game) {
-   if (round.remainingCardCount === 15 && game.currentRoundNum <= 2)
-  {
-
+   if (round.remainingCardCount === 13 && game.currentRoundNum <= 2) {
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
       $(this).text($(this).text() * 2)
- });
-
+    });
     game.startRound()
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
   }
-  }
+}
 
 
 
