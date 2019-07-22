@@ -8,27 +8,17 @@ import FinalRound from '../src/FinalRound';
 describe('FinalRound', function() {
 
   let game;
-  let round;
-  let round2;
   let final;
 
   beforeEach(() => {
     game = new Game(data);
     game.currentRoundNum = 2
     game.startRound()
-    round = game.currentRound
-    console.log(round)
-    game.startRound()
-    round2 = game.currentRound
-    console.log(round2)
-    game.startRound()
     final = game.currentRound
-    console.log(final)
   });
   
   
   it('should be a function', () => {
-      console.log(final.categories)
     expect(FinalRound).to.be.a('function');
   });
   
@@ -36,13 +26,8 @@ describe('FinalRound', function() {
     expect(final).to.be.an.instanceof(FinalRound);
   });
   
-  it('should hold the categories of cardSet', () => {
-      console.log(final.cardSet)
-    expect(final.cardSet).to.equal();
-  });
-  
-  it('should', () => {
-    expect(final.stuff()).to.equal("Hey, I'm stuff!")
+  it('should grab the final card in the categories', () => {
+    expect(final.categories[3].length).to.equal(1)
   });
   
 //   it('should', () => {
