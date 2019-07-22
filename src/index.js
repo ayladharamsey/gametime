@@ -39,7 +39,7 @@ $(".start-game-button").on("click", function(e) {
 });
 
 
-function evaluateGuess(game) {
+function evaluateGuess(game, round) {
   if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
@@ -50,7 +50,7 @@ function evaluateGuess(game) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
-  game.endRound1And2(game.currentRound.remainingCardCount, game.currentRound)
+  endRound(round, game)
   // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
 
 }
@@ -66,18 +66,16 @@ function guessManager(game, player1, player2, player3, round) {
     e.preventDefault();
     round.remainingCardCount --
     assignGuess(game);
-    evaluateGuess(game);
+    evaluateGuess(game, round);
     updatePlayerScore(player1, player2, player3);
     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
     $(`#${game.block}`).off()
     $(".question-and-answer").hide()
     $("table").show()
-    endRound(round, game)
   });
 }
 
 function getCards(round, game) {
-  game.endRound1And2()
   $(".card").on("click", function(e) {
     var question = $(e.target).closest("th").text();
     game.block = event.target.id
@@ -141,8 +139,9 @@ $('.card').on('click', () => {
   $('#player-1-answer-input').val('')
 })
 
- function endRound(round, game) {
-   if (round.remainingCardCount === 13 && game.currentRoundNum <= 2) {
+function endRound(round, game) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
+    round.determineRoundWinner(game.playerSet)
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
       $(this).text($(this).text() * 2)

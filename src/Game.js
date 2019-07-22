@@ -28,19 +28,7 @@ class Game {
     }
     // work on round 3 - diff behavior
   }
-
-  endRound1And2(cardCount, round) {
-    if (this.currentRoundNum === 1 && cardCount === 0) {
-      this.currentRoundNum++
-      round.determineRoundWinner(this.playerSet);
-    } else if (this.currentRoundNum === 2 && cardCount === 0) {
-      this.currentRoundNum++
-      round.determineRoundWinner(this.playerSet);
-    }
-  }
   
-  
-
   assignCategoriesRound1() {
     this.roundCategories = this.randomCategories.slice(0, 4)
     this.assignCards();

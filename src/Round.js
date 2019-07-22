@@ -1,3 +1,5 @@
+import Game from "./Game";
+
 class Round {
   constructor(roundCounter, categories, cardSet) {
     this.roundCounter = roundCounter;
@@ -14,9 +16,8 @@ class Round {
     this.roundWinner = players.sort((a, b) => {
       b.playerScore - a.playerScore
     }).shift()
+    console.log(this.roundWinner)
   }
- 
-}
 
   generateRandomDailyDoubleCard2() {
     if (this.dailyDouble1 === this.dailyDouble2) {
