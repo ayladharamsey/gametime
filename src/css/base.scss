@@ -17,13 +17,17 @@ body {
 .splash-h1,
 .splash-h2,
 .start-game-form {
-  padding-top: 60px;
+  padding-top: 50px;
   text-align: center;
 }
 
 .splash-h1 {
-  color: $h1-and-botton-color;
+  color: $h1-and-button-color;
   font-size: $h1-font-size;
+}
+
+.splash-h2 {
+  letter-spacing: 2px;
 }
 
 .splash-h2, 
@@ -33,7 +37,7 @@ label {
 }
 
 .name-input {
-  border: 2px dashed #cb4154;
+  border: 2px dashed $pop-color-3;
   border-radius: $border-radius;
   font-size: 20px;
   height: $input-height;
@@ -43,24 +47,32 @@ label {
 }
 
 table {
-  border: 2px solid black;
-  height: 500px;
-  width: 50%;
-  margin-left: 25%;
+  border: 8px solid $h1-and-button-color;
+  width: 69%;
   table-layout: fixed;
+  display: inline-block;
+  margin-bottom: 14%;
+  margin-left: 3%;
+  // height: 530px;
 }
 
 th {
-  border: 2px solid black;
-  width: 25%;
+  border: 4px dotted $splash-font-color;
+  width: 25vw;
+  height: 100px;
 }
 
-.player-name {
-  margin-top: 40px;
+.player-bar {
+  float: right;
+  margin-top: 5%;
+  margin-right: 3%;
 }
 
-.player-forms {
-  display: inline-block;
+.player-name,
+.player-score {
+  font-size: 50px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .question-and-answer {
@@ -94,16 +106,64 @@ th {
 .start-game-button {
   border: 2px dashed $splash-font-color;
   border-radius: $border-radius;
-  background-color: $h1-and-botton-color;
+  background-color: $h1-and-button-color;
   color: $splash-font-color;
   display: block;
   font-size: $splash-font-size;
   height: 70px;
-  margin-left: 39%;
+  margin-left: 39vw;
   margin-top: 50px;
-  width: 380px;
+  width: 390px;
 }
 
 input:focus::-webkit-input-placeholder {
   opacity: 0;
+}
+
+// .category-name-1, 
+// .category-name-2,
+// .category-name-3,
+// .category-name-4 {
+//   height: 5vh;
+// }
+
+.categories {
+  color: $h1-and-button-color;
+  font-size: 30px;
+}
+
+.card {
+  color: white;
+  font-size: 80px;
+}
+
+
+.main-h1 {
+  color: #cb4154;
+  display: inline;
+  font-size: 100px;
+  padding-top: 50px;
+  margin-left: 3%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.restart-game-button {
+  float: right;
+}
+
+#player-1-name {
+  color: $pop-color-3;
+}
+
+#player-2-name {
+  color: $splash-font-color;
+}
+
+#player-3-name {
+  color: $h1-and-button-color;
+}
+
+.player-score {
+  color: white;
 }
