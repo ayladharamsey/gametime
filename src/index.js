@@ -96,7 +96,7 @@ function getCards(round, game) {
         if (el.question === question) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
-          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
+          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + ", it's your turn!")
           $('.card').on('click', () => {
             game.currentCard.answer.toLowerCase()
           })
