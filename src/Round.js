@@ -19,6 +19,14 @@ class Round {
     console.log(this.roundWinner[0])
   }
 
+  assignDailyDouble2() {
+    if (this.roundCounter === 1) {
+      this.dailyDouble2 = Math.floor(Math.random() * 14) + 1;
+    }
+
+  }
+
+
   // generateRandomDailyDoubleCard2() {
   //   if (this.dailyDouble1 === this.dailyDouble2) {
   //     this.dailyDouble2 = this.dailyDouble1 + 1;
