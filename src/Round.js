@@ -6,7 +6,14 @@ class Round {
     this.categories = categories;
     this.cardSet = cardSet;
     this.remainingCardCount = 16;
+    this.roundWinner;
  
+  }
+
+  determineRoundWinner(players) {
+    this.roundWinner = players.sort((a, b) => {
+      b.playerScore - a.playerScore
+    }).shift()
   }
  
   generateRandomDailyDoubleCard2() {

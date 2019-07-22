@@ -1,8 +1,9 @@
 import Player from "./Player"
 import Round from "./Round";
+import index from "./index"
 
 class Game {
-  constructor (data, playerSet) {
+  constructor (data, playerSet ) {
     this.categories = data.categories
     this.cards = data.clues;
     this.randomCategories = Object.entries(this.categories).sort((a, b) => 0.5 - Math.random())
@@ -28,22 +29,17 @@ class Game {
     // work on round 3 - diff behavior
   }
 
-  endRound1And2() {
-    if (this.currentRoundNum === 1 && this.currentRound.remainingCardCount === 0) {
+  endRound1And2(cardCount, round) {
+    if (this.currentRoundNum === 1 && cardCount === 0) {
       this.currentRoundNum++
-      this.determineRoundWinner(this.playerSet);
-    } else if (this.currentRoundNum === 2 && this.currentRound.remainingCardCount === 0) {
+      round.determineRoundWinner(this.playerSet);
+    } else if (this.currentRoundNum === 2 && cardCount === 0) {
       this.currentRoundNum++
-      this.determineRoundWinner(this.playerSet);
+      round.determineRoundWinner(this.playerSet);
     }
-
   }
-
-  determineRoundWinner(players) {
-    return players.sort((a, b) => {
-      b.playerScore - a.playerScore
-    }).shift()
-  }
+  
+  
 
   assignCategoriesRound1() {
     this.roundCategories = this.randomCategories.slice(0, 4)

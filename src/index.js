@@ -41,17 +41,16 @@ function evaluateGuess(game) {
   if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
-    game.currentRound.remainingCardCount--;
   } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
-    game.currentRound.remainingCardCount--;
   } else {
     (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) 
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
-    game.currentRound.remainingCardCount-- ;
   }
-  game.endRound1And2(game.currentRound.remainingCardCount)
+  game.endRound1And2(game.currentRound.remainingCardCount, game.currentRound)
+  // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
+
 }
 
 
@@ -119,6 +118,13 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-2-score").text(`Score: ${player2.playerScore}`);
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
+
+// function displayRoundWinner(winner, cardCount) {
+//   if (cardCount.remainingCardCount === 0) {
+//     $('.round-winner').show()
+//     $('.round-winner').text(`Congratuations ${winner.name} you won the round!`)
+//   }
+// }
 
 // increasePointValue() {} (only called on Round 2)
 
