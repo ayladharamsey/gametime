@@ -39,19 +39,31 @@ $(".start-game-button").on("click", function(e) {
 });
 
 
-function evaluateGuess(game, round) {
-  if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
-    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
-    game.currentPlayer = 0
-  } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
-    game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
-  } else {
-    (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess)
-    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
-    game.currentPlayer++;
+function evaluateGuess(game) {
+  if (game.currentRoundNum === 1) {
+    if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
+      game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
+      game.currentPlayer = 0
+    } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
+      game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
+    } else {
+      (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess)
+      game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
+      game.currentPlayer++;
+    }
+  } else if (game.currentRoundNum === 2) {
+    game.currentCard.pointValue = (game.currentCard.pointValue * 2)
+    if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
+      game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
+      game.currentPlayer = 0
+    } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
+      game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
+    } else {
+      (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess)
+      game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
+      game.currentPlayer++;
+    }
   }
-  // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
-
 }
 
 
