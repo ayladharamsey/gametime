@@ -48,24 +48,43 @@ label {
 
 table {
   border: 8px solid $h1-and-button-color;
-  height: 550px;
-  width: 60%;
-  margin-left: 20%;
+  // height: 550px;
+  width: 70%;
+  // margin-left: 10%;
   table-layout: fixed;
+  // float: left;
+  display: inline-block;
+  margin-bottom: 100px;
 }
 
 th {
   border: 4px dotted $splash-font-color;
-  height: 20%;
-  width: 25%;
+  // height: 200px;
+  width: 25vw;
 }
 
 .player-name {
   margin-top: 40px;
 }
 
-.player-forms {
+// .player-forms {
+//   // display: inline-block;
+//   float: right;
+// }
+
+.player-bar {
   display: inline-block;
+}
+
+.player-name, 
+.player-score {
+  display: inline-block;
+}
+
+#player-1-info, 
+#player-2-info,
+#player-3-info {
+  float: right;
 }
 
 .question-and-answer {
@@ -130,6 +149,18 @@ input:focus::-webkit-input-placeholder {
   font-size: 80px;
 }
 
+
 .main-h1 {
   color: #cb4154;
+  display: inline;
+  font-size: 70px;
+  padding-top: 50px;
+  margin-left: 30px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  width: 60px;
+}
+
+.restart-game-button {
+  float: right;
 }
