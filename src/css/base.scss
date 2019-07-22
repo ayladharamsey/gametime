@@ -48,24 +48,31 @@ label {
 
 table {
   border: 8px solid $h1-and-button-color;
-  width: 70%;
+  width: 69%;
   table-layout: fixed;
   display: inline-block;
-  margin-bottom: 100px;
+  margin-bottom: 14%;
+  margin-left: 3%;
+  // height: 530px;
 }
 
 th {
   border: 4px dotted $splash-font-color;
   width: 25vw;
+  height: 100px;
 }
 
 .player-bar {
   float: right;
+  margin-top: 5%;
+  margin-right: 3%;
 }
 
 .player-name,
 .player-score {
-  font-size: 30px;
+  font-size: 50px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .question-and-answer {
@@ -113,12 +120,12 @@ input:focus::-webkit-input-placeholder {
   opacity: 0;
 }
 
-.category-name-1, 
-.category-name-2,
-.category-name-3,
-.category-name-4 {
-  height: 10%;
-}
+// .category-name-1, 
+// .category-name-2,
+// .category-name-3,
+// .category-name-4 {
+//   height: 5vh;
+// }
 
 .categories {
   color: $h1-and-button-color;
@@ -134,14 +141,29 @@ input:focus::-webkit-input-placeholder {
 .main-h1 {
   color: #cb4154;
   display: inline;
-  font-size: 70px;
+  font-size: 100px;
   padding-top: 50px;
-  margin-left: 30px;
+  margin-left: 3%;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  width: 60px;
 }
 
 .restart-game-button {
   float: right;
+}
+
+#player-1-name {
+  color: $pop-color-3;
+}
+
+#player-2-name {
+  color: $splash-font-color;
+}
+
+#player-3-name {
+  color: $h1-and-button-color;
+}
+
+.player-score {
+  color: white;
 }

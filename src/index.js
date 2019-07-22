@@ -79,7 +79,7 @@ function guessManager(game, player1, player2, player3, round) {
     assignGuess(game);
     evaluateGuess(game, round);
     updatePlayerScore(player1, player2, player3);
-    $(`#${game.block}`).html(`<img style="height:100px;" id="brick" src=${brick} />`)
+    $(`#${game.block}`).html(`<img style="height:60px; width:100px;" id="brick" src=${brick} />`)
     $(`#${game.block}`).off()
     $(".question-and-answer").hide()
     $("table").show()
