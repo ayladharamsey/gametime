@@ -1,16 +1,34 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
+@import 'variables';
 
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: $main-font;
 }
 
 body {
   background-image: url("../images/regular-page.png");
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 850px;
+  background-size: 100% 100%;
+  height: 100vh;
+}
+
+.splash-h1,
+.splash-h2,
+.start-game-form {
+  padding-top: 70px;
+  text-align: center;
+}
+
+.splash-h1 {
+  color: $h1-color;
+  font-size: 120px;
+}
+
+.splash-h2, 
+label {
+  color: $splash-font-color;
 }
 
 table {
@@ -51,4 +69,8 @@ th {
 
 .player-input-labels {
   font-size: 1.5em
+}
+
+label {
+  font-size: 30px;
 }
