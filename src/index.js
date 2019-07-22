@@ -69,7 +69,7 @@ function evaluateGuess(game) {
 
 function assignGuess(game) {
   game.playerSet[game.currentPlayer].guess = $(
-    `#player-1-answer-input`).val();
+    `#player-answer-input`).val();
 }
 
 function guessManager(game, player1, player2, player3, round) {
@@ -153,7 +153,7 @@ $(".restart-game-button").on("click", () => {
 });
 
 $('.card').on('click', () => {
-  $('#player-1-answer-input').val('')
+  $('#player-answer-input').val('')
 })
 
 $('.card').on('click', () => {
