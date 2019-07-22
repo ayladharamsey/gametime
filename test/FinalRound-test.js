@@ -25,7 +25,7 @@ describe('FinalRound', function() {
     expect(final).to.be.an.instanceof(FinalRound);
   });
   
-  it('should grab the final card in the categories', () => {
+  it('should have a property of the final card', () => {
     expect(final.cardSet[3].length).to.equal(1)
   });
   
