@@ -149,7 +149,7 @@ function endRound(round, game) {
       $(this).text($(this).text() * 2)
     });
     game.startRound()
-    round.remainingCardCount = 16
+    game.remainingCardCount = 16
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
     round.assignDailyDouble2()
@@ -166,7 +166,6 @@ function assignDailyDouble(round, game) {
   $(".card").on("click", () => {
     console.log(round.dailyDouble1)
     console.log(round.dailyDouble2)
-    console.log(round.remainingCardCount)
   if (round.dailyDouble1 === round.remainingCardCount || round.dailyDouble2 === round.remainingCardCount) {
     $(".player-input-labels-dd").text(game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!")
     $(".dd").show()
