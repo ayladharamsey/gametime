@@ -1,12 +1,9 @@
 import Round from '../src/Round'
 
 class FinalRound extends Round {
-  constructor(categories, cardSet) {
-    super(categories, cardSet)
-    this.categories = categories;
-    this.cardSet = cardSet;
+  constructor(roundCounter, categories, cardSet) {
+    super(roundCounter, categories, cardSet)
+    this.finalCard = this.cardSet[3]
   }
-   
-
 }
 export default FinalRound;

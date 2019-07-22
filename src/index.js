@@ -50,7 +50,6 @@ function evaluateGuess(game, round) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
-  endRound(round, game)
   // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
 
 }
@@ -72,6 +71,7 @@ function guessManager(game, player1, player2, player3, round) {
     $(`#${game.block}`).off()
     $(".question-and-answer").hide()
     $("table").show()
+    endRound(round, game)
   });
 }
 
@@ -121,12 +121,12 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
-// function displayRoundWinner(winner, cardCount) {
-//   if (cardCount.remainingCardCount === 0) {
-//     $('.round-winner').show()
-//     $('.round-winner').text(`Congratuations ${winner.name} you won the round!`)
-//   }
-// }
+ function displayRoundWinner(round) {
+   if (round.remainingCardCount === 0) {
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+   }
+ }
 
 // increasePointValue() {} (only called on Round 2)
 
@@ -149,6 +149,7 @@ function endRound(round, game) {
     game.startRound()
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
+    displayRoundWinner(round)
   }
 }
 
@@ -156,3 +157,5 @@ function endRound(round, game) {
 
 
 // determineCardValueForRounds() {}
+
+
