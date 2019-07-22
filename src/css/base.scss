@@ -1,16 +1,45 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
+@import 'variables';
 
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: $main-font;
 }
 
 body {
   background-image: url("../images/regular-page.png");
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 850px;
+  background-size: 100% 100%;
+  height: 100vh;
+}
+
+.splash-h1,
+.splash-h2,
+.start-game-form {
+  padding-top: 60px;
+  text-align: center;
+}
+
+.splash-h1 {
+  color: $h1-and-botton-color;
+  font-size: $h1-font-size;
+}
+
+.splash-h2, 
+label {
+  color: $splash-font-color;
+  font-size: $splash-font-size;
+}
+
+.name-input {
+  border: 2px dashed #cb4154;
+  border-radius: $border-radius;
+  font-size: 20px;
+  height: $input-height;
+  margin-right: 30px;
+  text-align: center;
+  width: $input-width;
 }
 
 table {
@@ -18,6 +47,7 @@ table {
   height: 500px;
   width: 50%;
   margin-left: 25%;
+  table-layout: fixed;
 }
 
 th {
@@ -49,6 +79,31 @@ th {
   font-size: 2em;
 }
 
-.player-input-labels {
-  font-size: 1.5em
+// .player-input-labels {
+//   font-size: 1.5em
+// }
+
+
+.name-label {
+  display: inline-block;
+    label {
+      display: block;
+    }
+}
+
+.start-game-button {
+  border: 2px dashed $splash-font-color;
+  border-radius: $border-radius;
+  background-color: $h1-and-botton-color;
+  color: $splash-font-color;
+  display: block;
+  font-size: $splash-font-size;
+  height: 70px;
+  margin-left: 39%;
+  margin-top: 50px;
+  width: 380px;
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
 }
