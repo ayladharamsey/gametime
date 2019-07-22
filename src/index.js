@@ -3,6 +3,9 @@ import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
 import brick from "../src/brick.png"
+import Round from "./Round";
+var tableClone = $("table").clone()
+
 
 
 let data;
@@ -31,34 +34,44 @@ $(".start-game-button").on("click", function(e) {
   game.startRound();
   makeBoard(game.currentRound);
   getCards(game.currentRound, game);
-  guessManager(game, player1, player2, player3);
+  guessManager(game, player1, player2, player3, game.currentRound);
   updatePlayerName(player1, player2, player3);
 });
 
-function evaluateGuess(game) {
-  if (game.currentPlayer === 2 && game.currentCard.answer !== game.playerSet[game.currentPlayer].guess) {
+
+function evaluateGuess(game, round) {
+  if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
+    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer = 0
-  } else if (game.currentCard.answer === game.playerSet[game.currentPlayer].guess) {
+  } else if (game.currentCard.answer.toLowerCase() === game.playerSet[game.currentPlayer].guess) {
     game.playerSet[game.currentPlayer].playerScore += game.currentCard.pointValue;
   } else {
+    (game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess)
+    game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
+  // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
+
 }
+
 
 function assignGuess(game) {
   game.playerSet[game.currentPlayer].guess = $(
-    `#player-${game.currentPlayer + 1}-answer-input`
-  ).val();
+    `#player-1-answer-input`).val();
 }
 
-function guessManager(game, player1, player2, player3) {
+function guessManager(game, player1, player2, player3, round) {
   $(`#player-1-answer-button`).on("click", function(e) {
     e.preventDefault();
+    round.remainingCardCount --
     assignGuess(game);
-    evaluateGuess(game);
+    evaluateGuess(game, round);
     updatePlayerScore(player1, player2, player3);
     $(`#${game.block}`).html(`<img style="height:200px;" id="brick" src=${brick} />`)
     $(`#${game.block}`).off()
+    $(".question-and-answer").hide()
+    $("table").show()
+    endRound(round, game)
   });
 }
 
@@ -70,8 +83,11 @@ function getCards(round, game) {
       array1.find(el => {
         if (el.question === question) {
           game.currentCard = el;
-          console.log(game.currentCard);
-          console.log(game.block)
+          $(".question").text(game.currentCard.question)
+          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
+          $('.card').on('click', () => {
+            game.currentCard.answer.toLowerCase()
+          })
         }
       })
     );
@@ -85,7 +101,9 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
+        $(".question-and-answer").show()
         $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
+        $("table").hide()
       });
     })
   );
@@ -103,12 +121,40 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
+ function displayRoundWinner(round) {
+   if (round.remainingCardCount === 0) {
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+   }
+ }
+
 // increasePointValue() {} (only called on Round 2)
 
 //dom-bois
 $(".restart-game-button").on("click", () => {
   location.reload();
 });
+
+$('.card').on('click', () => {
+  $('#player-1-answer-input').val('')
+})
+
+function endRound(round, game) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
+    round.determineRoundWinner(game.playerSet)
+    $("table").replaceWith(tableClone)
+    $('.card').each(function() {
+      $(this).text($(this).text() * 2)
+    });
+    game.startRound()
+    makeBoard(game.currentRound);
+    getCards(game.currentRound, game);
+    displayRoundWinner(round)
+  }
+}
+
+
+
 
 // determineCardValueForRounds() {}
 

@@ -27,6 +27,15 @@
   <section class="main-page" hidden>
   <button type="submit" class="restart-game-button">Restart Game</button>
   <h1>Jeopardy!</h1>
+    <div class="question-and-answer" style="display: none";>
+      <div class="question">
+      </div>
+      <article class="answer-info" id="player-1-answer-info">
+      <label for="player-1-answer-input" class="player-input-labels"></label>
+      <input type="text" class="answer-input" id="player-1-answer-input" placeholder="Enter Answer" style="text-transform: lowercase">
+      <button type="submit" class="player-buttons" id="player-1-answer-button">Submit!</button>
+      </article>
+    </div>
   <table>
     <tr id="cateogies-display">
       <th class="card" id="category-name-1">Cateogry 1</th>
@@ -68,15 +77,11 @@
   <h4 id="final-clue">Final Clue</h4>
 </section> -->
   <section class="player-bar"></section>
+  <span class="round-winner" hidden>Round</span>
   <article id="player-1-info">
     <h2 class="player-name" id="player-1-name">Player 1 Name</h2>
     <h3 class="player-score" id="player-1-score">Score: </h3>
     <form class="player-forms" id="player-1-form">
-      <article class="answer-info" id="player-1-answer-info">
-      <label for="player-1-answer-input" class="player-input-labels">Answer</label>
-      <input type="text" class="answer-input" id="player-1-answer-input" placeholder="Enter Answer">
-      <button type="submit" class="player-buttons" id="player-1-answer-button">Submit!</button>
-      </article>
       <article class="wager-info" id="player-1-wager-input" hidden>
       <label for="player-1-hidden-input" class="player-input-labels">Wager</label>
       <input type="text" class="hidden-input" id="player-1-hidden-input" placeholder="Enter Wager">
@@ -87,7 +92,7 @@
   <article id="player-2-info">
     <h2 class="player-name" id="player-2-name">Player 2 Name</h2>
     <h3 class="player-score" id="player-2-score">Score: </h3>
-    <form class="player-forms" id="player-2-form">
+    <!-- <form class="player-forms" id="player-2-form">
       <article class="answer-info" id="player-2-answer-info">
       <label for="player-2-answer-input" class="player-input-labels">Answer</label>
       <input type="text" class="answer-input" id="player-2-answer-input" placeholder="Enter Answer">
@@ -103,7 +108,7 @@
   <article id="player-3-info">
     <h2 class="player-name" id="player-3-name">Player 3 Name</h2>
     <h3 class="player-score" id="player-3-score">Score:</h3>
-    <form class="player-forms" id="player-3-form">
+    <!-- <form class="player-forms" id="player-3-form">
       <article class="answer-info" id="player-3-answer-info">
       <label for="player-3-answer-input" class="player-input-labels">Answer</label>
       <input type="text" class="answer-input" id="player-3-answer-input" placeholder="Enter Answer">

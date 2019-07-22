@@ -32,3 +32,23 @@ th {
 .player-forms {
   display: inline-block;
 }
+
+.question-and-answer {
+  height: 400px;
+  width: 500px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.question {
+  text-align: center;
+  font-size: 2em;
+}
+
+.player-input-labels {
+  font-size: 1.5em
+}

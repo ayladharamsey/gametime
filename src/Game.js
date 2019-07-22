@@ -42,8 +42,6 @@ class Game {
     // work on round 3 - diff behavior
   }
 
-  // determineRoundWinner() {}
-
   assignCategoriesRound1() {
     this.roundCategories = this.randomCategories.slice(0, 4);
     this.assignCards();
