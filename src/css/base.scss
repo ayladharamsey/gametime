@@ -17,13 +17,17 @@ body {
 .splash-h1,
 .splash-h2,
 .start-game-form {
-  padding-top: 60px;
+  padding-top: 50px;
   text-align: center;
 }
 
 .splash-h1 {
-  color: $h1-and-botton-color;
+  color: $h1-and-button-color;
   font-size: $h1-font-size;
+}
+
+.splash-h2 {
+  letter-spacing: 2px;
 }
 
 .splash-h2, 
@@ -33,7 +37,7 @@ label {
 }
 
 .name-input {
-  border: 2px dashed #cb4154;
+  border: 2px dashed $pop-color-3;
   border-radius: $border-radius;
   font-size: 20px;
   height: $input-height;
@@ -43,15 +47,16 @@ label {
 }
 
 table {
-  border: 2px solid black;
-  height: 500px;
-  width: 50%;
-  margin-left: 25%;
+  border: 8px solid $h1-and-button-color;
+  height: 550px;
+  width: 60%;
+  margin-left: 20%;
   table-layout: fixed;
 }
 
 th {
-  border: 2px solid black;
+  border: 4px dotted $splash-font-color;
+  height: 20%;
   width: 25%;
 }
 
@@ -94,16 +99,37 @@ th {
 .start-game-button {
   border: 2px dashed $splash-font-color;
   border-radius: $border-radius;
-  background-color: $h1-and-botton-color;
+  background-color: $h1-and-button-color;
   color: $splash-font-color;
   display: block;
   font-size: $splash-font-size;
   height: 70px;
-  margin-left: 39%;
+  margin-left: 39vw;
   margin-top: 50px;
-  width: 380px;
+  width: 390px;
 }
 
 input:focus::-webkit-input-placeholder {
   opacity: 0;
+}
+
+.category-name-1, 
+.category-name-2,
+.category-name-3,
+.category-name-4 {
+  height: 10%;
+}
+
+.categories {
+  color: $h1-and-button-color;
+  font-size: 30px;
+}
+
+.card {
+  color: white;
+  font-size: 80px;
+}
+
+.main-h1 {
+  color: #cb4154;
 }
