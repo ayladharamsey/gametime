@@ -121,12 +121,12 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
- function displayRoundWinner(winner, cardCount) {
-   if (cardCount.remainingCardCount === 0) {
-    $('.round-winner').show()
-    $('.round-winner').text(`Congratuations ${winner.name} you won the round!`)
-   }
- }
+ // function displayRoundWinner(winner, cardCount) {
+ //   if (cardCount.remainingCardCount === 0) {
+ //    $('.round-winner').show()
+ //    $('.round-winner').text(`Congratuations ${winner.name} you won the round!`)
+ //   }
+ // }
 
 // increasePointValue() {} (only called on Round 2)
 
