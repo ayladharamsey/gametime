@@ -113,7 +113,9 @@ function makeBoard(currentRound) {
     // })
     $(`#category-name-${index + 1}`).html(cat[0]
       .replace(/([A-Z])/g, ' $1')
-      .replace(/^./, function(str){return str.toUpperCase()}));
+      .replace(/^./, function(str) {
+        return str.toUpperCase()
+      }));
   });
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
