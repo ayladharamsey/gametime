@@ -34,6 +34,7 @@ $(".start-game-button").on("click", function(e) {
   getCards(game.currentRound, game);
   guessManager(game, player1, player2, player3, game.currentRound);
   updatePlayerName(player1, player2, player3);
+  assignDailyDouble(game.currentRound)
 });
 
 
@@ -147,7 +148,9 @@ $('.card').on('click', () => {
 
 function assignDailyDouble(round) {
   $(".card").on("click", () => {
+    console.log(round.dailyDouble1)
   if (round.dailyDouble1 === round.remainingCardCount) {
+    $(".dd").show()
     console.log("DailyDOUBLEEEE")
     }
   })
