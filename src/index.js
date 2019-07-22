@@ -116,7 +116,6 @@ function makeBoard(currentRound) {
         $(".question-and-answer").show()
         $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
         $("table").hide()
-        currentRound.categories.replace(/([a-z])([A-Z])/g, '$1 $2');
       });
     })
   );
