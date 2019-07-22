@@ -156,6 +156,16 @@ $('.card').on('click', () => {
   $('#player-1-answer-input').val('')
 })
 
+$('.card').on('click', () => {
+  $('.main-h1').hide();
+  $('.player-bar').hide();
+})
+
+$('#player-1-answer-button').on('click', () => {
+  $('.main-h1').show();
+  $('.player-bar').show();
+})
+
 function endRound(round, game) {
   if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
     round.determineRoundWinner(game.playerSet)
