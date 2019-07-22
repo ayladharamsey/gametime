@@ -130,7 +130,7 @@ $('.card').on('click', () => {
 })
 
  function endRound(round, game) {
-   if (round.remainingCardCount === 13 && game.currentRoundNum <= 2) {
+   if (round.remainingCardCount === 0 && game.currentRoundNum <= 2) {
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
       $(this).text($(this).text() * 2)
@@ -139,6 +139,18 @@ $('.card').on('click', () => {
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
   }
+}
+
+$('.card').on('click', () => {
+  $('#player-1-answer-input').val('')
+})
+
+function assignDailyDouble(round) {
+  $(".card").on("click", () => {
+  if (round.dailyDouble1 === round.remainingCardCount) {
+    console.log("DailyDOUBLEEEE")
+    }
+  })
 }
 
 
