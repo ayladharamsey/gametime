@@ -1,12 +1,13 @@
 import Round from '../src/Round'
 
 class FinalRound extends Round {
-  constructor(roundCounter, categories, cardSet) {
-    super(roundCounter, categories, cardSet)
-    this.categories = categories;
-    this.cardSet = cardSet;
+  constructor(categories, cardSet) {
+    super(categories, cardSet)
+    console.log(this.categories)
   }
-   
+  stuff() {
+    return `Hey, I'm stuff!`
+  }
 
 }
 export default FinalRound;
