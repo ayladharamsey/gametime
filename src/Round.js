@@ -9,7 +9,6 @@ class Round {
     this.cardSet = cardSet;
     this.remainingCardCount = 16;
     this.roundWinner;
-
   }
 
   determineRoundWinner(players) {

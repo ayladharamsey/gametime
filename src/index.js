@@ -36,7 +36,7 @@ $(".start-game-button").on("click", function(e) {
   getCards(game.currentRound, game);
   guessManager(game, player1, player2, player3, game.currentRound);
   updatePlayerName(player1, player2, player3);
-  assignDailyDouble1(game.currentRound)
+  assignDailyDouble1(game.currentRound, game)
 });
 
 
@@ -159,18 +159,24 @@ $('.card').on('click', () => {
   $('#player-1-answer-input').val('')
 })
 
-function assignDailyDouble1(round) {
+function assignDailyDouble1(round, game) {
   $(".card").on("click", () => {
     console.log(round.dailyDouble1)
   if (round.dailyDouble1 === round.remainingCardCount) {
     $(".player-input-labels-dd").text(game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!")
     $(".dd").show()
+    takeWager(game)
     console.log("DailyDOUBLEEEE")
     }
   })
 }
 
-
+function takeWager(game) {
+    $("#player-1-wager-button").on("click", () => {
+      game.currentCard.pointValue = $("#player-1-hidden-input").val()
+      console.log(game.currentCard.pointValue)
+    })
+}
 
 
 
