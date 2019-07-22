@@ -50,8 +50,6 @@ function evaluateGuess(game, round) {
     game.playerSet[game.currentPlayer].playerScore -= game.currentCard.pointValue;
     game.currentPlayer++;
   }
-  // displayRoundWinner(game.currentRound.roundWinner, game.currentRound.remainingCardCount )
-
 }
 
 
