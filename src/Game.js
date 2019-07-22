@@ -37,9 +37,8 @@ class Game {
       );
     } else if (this.currentRoundNum === 3) {
       this.assignCategoriesRound3();
-      this.currentRound = new FinalRound(this.roundCategories, this.cardSet);
+      this.currentRound = new FinalRound(this.currentRoundNum, this.roundCategories, this.cardSet);
     }
-    // work on round 3 - diff behavior
   }
 
   assignCategoriesRound1() {

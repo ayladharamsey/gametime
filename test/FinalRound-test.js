@@ -2,7 +2,6 @@ import chai from 'chai';
 const expect = chai.expect;
 import data from '../src/dataset.js'
 import Game from '../src/Game';
-import Round from '../src/Round';
 import FinalRound from '../src/FinalRound';
 
 describe('FinalRound', function() {
@@ -26,8 +25,8 @@ describe('FinalRound', function() {
     expect(final).to.be.an.instanceof(FinalRound);
   });
   
-  it('should grab the final card in the categories', () => {
-    expect(final.categories[3].length).to.equal(1)
+  it('should have a property of the final card', () => {
+    expect(final.cardSet[3].length).to.equal(1)
   });
   
 //   it('should', () => {
