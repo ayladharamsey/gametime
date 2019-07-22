@@ -133,14 +133,15 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
- function displayRoundWinner(round) {
-   if (round.remainingCardCount === 0) {
+function displayRoundWinner(round, game) {
+  if (round.remainingCardCount === 0) {
     $('.round-winner').show()
     $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
-   }
- }
-
-// increasePointValue() {} (only called on Round 2)
+  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 3) {
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the whole game! WOWZA!`)
+  }
+}
 
 //dom-bois
 $(".restart-game-button").on("click", () => {
@@ -161,7 +162,12 @@ function endRound(round, game) {
     game.startRound()
     makeBoard(game.currentRound);
     getCards(game.currentRound, game);
-    displayRoundWinner(round)
+    displayRoundWinner(round, game) 
+  } 
+  
+  if (round.remainingCardCount === 0 && game.currentRoundNum === 3) {
+    console.log('hi')
+    round.determineRoundWinner(game.playerSet)
   }
 }
 

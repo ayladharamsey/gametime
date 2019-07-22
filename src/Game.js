@@ -74,8 +74,6 @@ class Game {
     this.cardSet = finalCardSet;
   }
 
-  determineGameWinner() {}
-
   endGame() {}
 }
 
