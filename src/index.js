@@ -73,7 +73,7 @@ function assignGuess(game) {
 }
 
 function guessManager(game, player1, player2, player3, round) {
-  $(`#player-1-answer-button`).on("click", function(e) {
+  $(`#player-answer-button`).on("click", function(e) {
     e.preventDefault();
     round.remainingCardCount --
     assignGuess(game);
@@ -161,7 +161,7 @@ $('.card').on('click', () => {
   $('.player-bar').hide();
 })
 
-$('#player-1-answer-button').on('click', () => {
+$('#player-answer-button').on('click', () => {
   $('.main-h1').show();
   $('.player-bar').show();
 })
