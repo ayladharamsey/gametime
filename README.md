@@ -12,3 +12,5 @@
 #### - HTML  - CSS/SCSS
 #### - JavaScript  - jQuery
 #### - Webpack  - Fetch API
+
+##### Gametime is an application aimed at improving students skills in OOP, SRP, and Design. Our group was tasked with creating Jeopardy which is a game played by 3 users where they encounter trivia questions and gain/lose points based on their answers. The game consists of 3 rounds and a winner is determined after the final question is answered in round 3.
