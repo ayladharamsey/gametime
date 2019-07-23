@@ -17,3 +17,6 @@
 
 #### Splash Page Static Image:
 ![image](https://user-images.githubusercontent.com/47184994/61745114-038ee580-ad56-11e9-87af-af49795d5a48.png)
+
+#### Static Main Board Image:
+
