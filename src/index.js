@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Game from '../src/Game.js';
 import Player from '../src/Player.js';
 import brick from '../src/brick.png'
+import FinalRound from './FinalRound';
 var tableClone = $('table').clone();
 
 let data;
@@ -147,7 +148,7 @@ function displayRoundWinner(round, game) {
     $("table").hide();
     $('.round-winner').show()
     $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
-  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 3) {
+  } else if (game.currentRoundNum === 3) {
     $("table").hide();
     $('.round-winner').show()
     $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the whole game! WOWZA!`)
@@ -199,14 +200,13 @@ function endRound(round, game) {
     displayRoundWinner(round, game);
     setTimeout(function() {
       game.startRound();
+      $('.round-winner').hide()
+      $(".final-round-page").show()
       $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
-    }, 7000)
-  // } else if (round.remainingCardCount === 0 && game.currentRoundNum === 3) {
-  //   round.determineRoundWinner(game.playerSet)
-  // }
-}
+    }, 2000)
+  }
 }
 
 function assignDailyDouble(round, game) {
