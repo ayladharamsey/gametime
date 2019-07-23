@@ -27,8 +27,6 @@ $(".start-game-button").on("click", function(e) {
   var player2 = new Player($("#player-two-name-input").val());
   var player3 = new Player($("#player-three-name-input").val());
   var game = new Game(data, [player1, player2, player3]);
-  $(".splash-page").hide();
-  $(".main-page").show();
   game.startRound();
   makeBoard(game.currentRound);
   getCards(game.currentRound, game);
@@ -81,14 +79,9 @@ function guessManager(game, player1, player2, player3, round) {
   });
 }
 
-
-
 function guessDomWork(game) {
   $(`#${game.block}`).html(`<img style="height:60px; width:100px;" id="brick" src=${brick} />`)
   $(`#${game.block}`).off()
-  $(".question-and-answer").hide()
-  $("table").show()
-  $(".dd").hide()
 }
 
 function getCards(round, game) {
@@ -121,9 +114,7 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
-        $(".question-and-answer").show()
         $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
-        $("table").hide()
       });
     })
   );
@@ -148,29 +139,35 @@ function displayRoundWinner(round) {
   }
 }
 
-// increasePointValue() {} (only called on Round 2)
-
 //dom-bois
 $(".restart-game-button").on("click", () => {
   location.reload();
 });
 
-$('.card').on('click', () => {
-  $('#player-answer-input').val('')
-})
+$(".start-game-button").on("click", () => {
+  $(".splash-page").hide();
+  $(".main-page").show();
+});
+
 
 $('.card').on('click', () => {
+  $('#player-answer-input').val('')
   $('.main-h1').hide();
   $('.player-bar').hide();
+  $("table").hide()
+  $(".question-and-answer").show()
 })
 
 $('#player-answer-button').on('click', () => {
   $('.main-h1').show();
   $('.player-bar').show();
+  $(".question-and-answer").hide()
+  $("table").show()
+  $(".dd").hide()
 })
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet)
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
@@ -190,10 +187,6 @@ function endRound(round, game) {
   }
 }
 
-
-$('.card').on('click', () => {
-  $('#player-1-answer-input').val('')
-})
 
 function assignDailyDouble(round, game) {
   $(".card").on("click", () => {
