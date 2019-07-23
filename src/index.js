@@ -38,7 +38,6 @@ $('.start-game-button').on('click', function(e) {
 });
 
 function evaluateGuess(game) {
-  console.log(game.currentRoundNum)
   if (
     game.currentPlayer === 2 &&
     game.currentCard.answer.toLowerCase() !==
@@ -145,12 +144,11 @@ function updatePlayerScore(player1, player2, player3) {
 }
 
 function displayRoundWinner(round) {
-  if (round.remainingCardCount === 0) {
-    $(".round-winner").show();
-    $(".round-winner").text(
-      `Congratuations ${round.roundWinner[0].playerName} you won the round!`
-    );
-  }
+  $("table").hide();
+  $(".round-winner").show();
+  $(".round-winner").text(
+    `Congratuations ${round.roundWinner[0].playerName} you won the round!`
+  );
 }
 
 $('.restart-game-button').on('click', () => {
@@ -181,23 +179,28 @@ $("#player-answer-button").on("click", () => {
 function endRound(round, game) {
   if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
-    $("table").replaceWith(tableClone);
-    $(".card").each(function() {
-      $(this).text($(this).text() * 2);
-    });
-    game.startRound();
-    round.remainingCardCount = 16;
-    startRoundManager(game.currentRound, game);
-    round.assignDailyDouble2();
-    assignDailyDouble(round, game);
-    displayRoundWinner(round);
-  } else if (round.remainingCardCount === 15 && game.currentRoundNum === 2) {
-    $('table').hide();
-    $('.final-round-page').show();
-    game.startRound();
-    $("#final-category").text(
-      "The Final Category is..." + game.currentRound.categories[0][0]
-    );
+    displayRoundWinner(round, game);
+    setTimeout(function() {
+      $("table").replaceWith(tableClone);
+      $(".card").each(function() {
+        $(this).text($(this).text() * 2);
+      });
+      game.startRound();
+      round.remainingCardCount = 16;
+      startRoundManager(game.currentRound, game);
+      round.assignDailyDouble2();
+      assignDailyDouble(round, game);
+    }, 7000)
+  } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
+    $("table").hide();
+    displayRoundWinner(round, game);
+    setTimeout(function() {
+      game.startRound();
+      $("#final-category").text(
+        "The Final Category is..." + game.currentRound.categories[0][0]
+      );
+    }, 7000)
+
   }
 }
 
