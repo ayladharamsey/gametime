@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Game from '../src/Game.js';
 import Player from '../src/Player.js';
 import brick from '../src/brick.png'
+import FinalRound from './FinalRound';
 var tableClone = $('table').clone();
 
 let data;
@@ -143,12 +144,16 @@ function updatePlayerScore(player1, player2, player3) {
   $('#player-3-score').text(`Score: ${player3.playerScore}`);
 }
 
-function displayRoundWinner(round) {
-  $("table").hide();
-  $(".round-winner").show();
-  $(".round-winner").text(
-    `Congratuations ${round.roundWinner[0].playerName} you won the round!`
-  );
+function displayRoundWinner(round, game) {
+  if (game.currentRoundNum === 1 || game.currentRoundNum === 2) {
+    $("table").hide();
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+  } else if (game.currentRoundNum === 3) {
+    $("table").hide();
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the whole game! WOWZA!`)
+  }
 }
 
 $('.restart-game-button').on('click', () => {
@@ -190,17 +195,19 @@ function endRound(round, game) {
       startRoundManager(game.currentRound, game);
       round.assignDailyDouble2();
       assignDailyDouble(round, game);
-    }, 7000)
+      $('.round-winner').hide()
+    }, 2000)
   } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
     $("table").hide();
     displayRoundWinner(round, game);
     setTimeout(function() {
       game.startRound();
+      $('.round-winner').hide()
+      $(".final-round-page").show()
       $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
-    }, 7000)
-
+    }, 2000)
   }
 }
 
