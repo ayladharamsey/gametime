@@ -178,14 +178,14 @@ $("#player-answer-button").on("click", () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     $("table").replaceWith(tableClone);
     $(".card").each(function() {
       $(this).text($(this).text() * 2);
     });
     game.startRound();
-    round.remainingCardCount = 16;
+    round.remainingCardCount = 0;
     startRoundManager(game.currentRound, game);
     round.assignDailyDouble2();
     assignDailyDouble(round, game);
@@ -218,11 +218,11 @@ function assignDailyDouble(round, game) {
 function takeWager(game) {
   $("#player-1-wager-button").on("click", () => {
     if (game.currentRoundNum === 1) {
-      game.currentCard.pointValue = $("#player-1-hidden-input").val();
+      game.currentCard.pointValue = Math.max($("#player-1-hidden-input").val(), 0)
     } else if (game.currentRoundNum === 2) {
-      game.currentCard.pointValue = $("#player-1-hidden-input").val() / 2;
+      game.currentCard.pointValue = Math.max($("#player-1-hidden-input").val(), 0) / 2;
     }
-    if ($("#player-1-hidden-input").val() > 4) {
+    if ($("#player-1-hidden-input").val() < Math.max(game.playerSet[game.currentPlayer].playerScore, 0) + 101) {
       $("#player-answer-button").prop("disabled", false)
     }
   });
