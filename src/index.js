@@ -194,6 +194,7 @@ function endRound(round, game) {
       startRoundManager(game.currentRound, game);
       round.assignDailyDouble2();
       assignDailyDouble(round, game);
+      $('.round-winner').hide()
     }, 7000)
   } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
     $("table").hide();
