@@ -60,20 +60,19 @@ table {
   }
 }
 
-
-
 .player-bar {
   float: right;
   margin-top: 5%;
   margin-right: 3%;
+    .player-name,
+    .player-score {
+      font-size: 50px;
+      margin-top: 20px;
+     text-align: $center;
+  }
 }
 
-.player-name,
-.player-score {
-  font-size: 50px;
-  margin-top: 20px;
-  text-align: $center;
-}
+
 
 .question-and-answer {
   height: 500px;
@@ -115,20 +114,13 @@ input:focus::-webkit-input-placeholder {
   opacity: 0;
 }
 
-// .category-name-1, 
-// .category-name-2,
-// .category-name-3,
-// .category-name-4 {
-//   height: 5vh;
-// }
-
 .categories {
   color: $pop-color-1;
   font-size: 30px;
 }
 
 .card {
-  color: white;
+  color: $neutral-color;
   font-size: 80px;
 }
 
@@ -160,7 +152,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .player-score {
-  color: white;
+  color: $neutral-color;
 }
 
 #player-answer-input {
@@ -175,7 +167,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .question {
-  color: white;
+  color: $neutral-color;
   font-size: 60px;
   letter-spacing: 2px;
   margin-bottom: 20px;
