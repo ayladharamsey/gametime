@@ -16,7 +16,7 @@ class Round {
     this.roundWinner = winners.sort((a, b) => {
       return b.playerScore - a.playerScore
     })
-    console.log(this.roundWinner[0])
+    return this.roundWinner[0]
   }
 
   assignDailyDouble2() {
