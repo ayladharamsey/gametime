@@ -159,6 +159,7 @@ $('.restart-game-button').on('click', () => {
 $('.start-game-button').on('click', () => {
   $('.splash-page').hide();
   $('.main-page').show();
+  $('.final-round-page').hide();
 });
 
 function clickCardDom() {
@@ -178,7 +179,7 @@ $("#player-answer-button").on("click", () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     $("table").replaceWith(tableClone);
     $(".card").each(function() {
@@ -190,8 +191,9 @@ function endRound(round, game) {
     round.assignDailyDouble2();
     assignDailyDouble(round, game);
     displayRoundWinner(round);
-  } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
-    $("table").hide();
+  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 2) {
+    $('table').hide();
+    $('.final-round-page').show();
     game.startRound();
     $("#final-category").text(
       "The Final Category is..." + game.currentRound.categories[0][0]
