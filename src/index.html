@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" src="css/base.scss">
   <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <section class="splash-page">
     <h1 class="splash-h1">Welcome To Jeopardy!</h1>
@@ -35,6 +36,15 @@
   <section class="final-round-page">
     <h2 id="final-category">Category</h2>
     <h4 id="final-clue">Final Clue</h4>
+    <div class="final-round-player-box" id="player-1-final-info">
+      <h2 class="players-final" id="final-round-player-1">Player 1</h2>
+    </div>
+    <div class="final-round-player-box" id="player-2-final-info">
+      <h2 class="players-final" id="final-round-player-2">Player 2</h2>
+    </div>
+    <div class="final-round-player-box" id="player-3-final-info">
+      <h2 class="players-final" id="final-round-player-3">Player 3</h2>
+    </div>
   </section>
   <section class="main-page" hidden>
     <button type="submit" class="restart-game-button">Restart Game</button>
@@ -102,8 +112,9 @@
         <h2 class="player-name" id="player-3-name">Player 3 Name</h2>
         <h3 class="player-score" id="player-3-score">Score:</h3>
       </article>
-  </section>
+    </section>
 </body>
+
 </html>
 
 <!-- <div class="question-and-answer" style="display: none";>
