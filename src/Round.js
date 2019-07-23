@@ -3,7 +3,8 @@ import Game from "./Game";
 class Round {
   constructor(roundCounter, categories, cardSet) {
     this.roundCounter = roundCounter;
-    this.dailyDouble1 = Math.floor(Math.random() * 14) + 1;
+    // this.dailyDouble1 = Math.floor(Math.random() * 14) + 1;
+    this.dailyDouble1 = 14
     this.dailyDouble2;
     this.categories = categories;
     this.cardSet = cardSet;

@@ -11,14 +11,14 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
   .then(fetchData => (data = fetchData.data));
 
 $(document).ready(function() {
-  $(':input[type="submit"]').prop("disabled", true);
+  $('.start-game-button').prop("disabled", true);
   $('input[type="text"]').keyup(function() {
     if (
       $("#player-one-name-input").val() !== "" &&
       $("#player-two-name-input").val() !== "" &&
       $("#player-three-name-input").val() !== ""
     ) {
-      $(':input[type="submit"]').prop("disabled", false);
+      $(".start-game-button").prop("disabled", false);
     }
   });
 });
@@ -209,6 +209,7 @@ function assignDailyDouble(round, game) {
         game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!"
       );
       $(".dd").show();
+      $("#player-answer-button").prop("disabled", true)
       takeWager(game);
     }
   });
@@ -220,6 +221,9 @@ function takeWager(game) {
       game.currentCard.pointValue = $("#player-1-hidden-input").val();
     } else if (game.currentRoundNum === 2) {
       game.currentCard.pointValue = $("#player-1-hidden-input").val() / 2;
+    }
+    if ($("#player-1-hidden-input").val() > 4) {
+      $("#player-answer-button").prop("disabled", false)
     }
   });
 }
