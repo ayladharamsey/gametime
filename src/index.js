@@ -96,7 +96,7 @@ function getCards(round, game) {
         if (el.question === question) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
-          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + " Its Your Turn!")
+          $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + ", it's your turn!")
           $('.card').on('click', () => {
             game.currentCard.answer.toLowerCase()
           })
@@ -154,6 +154,16 @@ $(".restart-game-button").on("click", () => {
 
 $('.card').on('click', () => {
   $('#player-1-answer-input').val('')
+})
+
+$('.card').on('click', () => {
+  $('.main-h1').hide();
+  $('.player-bar').hide();
+})
+
+$('#player-1-answer-button').on('click', () => {
+  $('.main-h1').show();
+  $('.player-bar').show();
 })
 
 function endRound(round, game) {
