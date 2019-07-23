@@ -24,8 +24,6 @@ class Round {
       this.dailyDouble2 = Math.floor(Math.random() * 14) + 1;
     }
   }
-
-
 }
 
  export default Round;
