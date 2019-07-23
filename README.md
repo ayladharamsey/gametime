@@ -4,13 +4,12 @@
 
 #### - Alek Aker
 #### -Ann Cerveny
-### - Ayla Dharamsey
+#### - Ayla Dharamsey
 #### - Emily Lalonde
 
 ### Utilizing:
 
-#### - HTML
-#### - CSS/SCSS
+#### - HTML #### - CSS/SCSS
 #### - JavaScript
 #### - jQuery
 #### - Webpack
