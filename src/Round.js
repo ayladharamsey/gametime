@@ -23,22 +23,9 @@ class Round {
     if (this.roundCounter === 1) {
       this.dailyDouble2 = Math.floor(Math.random() * 14) + 1;
     }
-
   }
 
 
-  // generateRandomDailyDoubleCard2() {
-  //   if (this.dailyDouble1 === this.dailyDouble2) {
-  //     this.dailyDouble2 = this.dailyDouble1 + 1;
-  //   }
-  //   return;
-  // }
-
-  findDailyDouble() {
-    if (this.dailyDouble1 === this.remainingCardCount) {
-      this.player.canWager = true;
-    }
-  }
  }
 
  export default Round;
