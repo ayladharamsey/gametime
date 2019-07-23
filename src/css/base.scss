@@ -187,7 +187,7 @@ input:focus::-webkit-input-placeholder {
   border: 10px $border-type $pop-color-3;
   text-align: center;
   width: 1100px;
-  height: 460px;
+  height: 490px;
   display: inline-block;
   position: absolute;
   margin-top: 3%;
@@ -206,6 +206,40 @@ input:focus::-webkit-input-placeholder {
   margin-top: 30px;
 }
 
-.final-answer-input {
+.final-round-player-box {
   display: inline-block;
+  margin-top: 100px;
+}
+
+#player-2-final-info {
+  margin-right: 90px;
+  margin-left: 90px;
+}
+
+.final-round-label {
+  font-size: 30px;
+  color: $neutral-color;
+  display: block;
+}
+
+.final-wage-input,
+.final-answer-input {
+  border: $border-size $border-type $pop-color-3;
+  border-radius: $border-radius;
+  font-size: 20px;
+  height: 40px;
+  text-align: $center;
+  width: 280px;
+}
+
+#final-round-player-1 {
+  color: $pop-color-3;
+}
+
+#final-round-player-2 {
+  color: $pop-color-2;
+}
+
+#final-round-player-3 {
+  color: $pop-color-1;
 }
