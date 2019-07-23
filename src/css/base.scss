@@ -2,9 +2,9 @@
 @import 'variables';
 
 * {
-  margin: 0;
   box-sizing: border-box;
   font-family: $main-font;
+  margin: 0;
 }
 
 body {
@@ -48,45 +48,45 @@ label {
 
 table {
   border: 8px solid $pop-color-1;
-  width: 69%;
-  table-layout: fixed;
   display: inline-block;
   margin-bottom: 14%;
   margin-left: 3%;
+  table-layout: fixed;
+  width: 69%;
     th {
       border: 4px dotted $pop-color-2;
-      width: 25vw;
       height: 100px;
+      width: 25vw;
   }
 }
 
 .player-bar {
   float: right;
-  margin-top: 5%;
   margin-right: 3%;
+  margin-top: 5%;
     .player-name,
     .player-score {
       font-size: 50px;
       margin-top: 20px;
-     text-align: $center;
+      text-align: $center;
   }
 }
 
 
 
 .question-and-answer {
-  height: 500px;
-  width: 1100px;
+  align-items: center;
   border: 10px $border-type $pop-color-3;
   display: flex;
   flex-direction: column;
+  height: 500px;
   justify-content: center;
-  align-items: center;
   margin: auto;
   margin-top: 30px;
+  width: 1100px;
     .question {
-      text-align: $center;
       font-size: 2em;
+      text-align: $center;
   }
 }
 
@@ -98,9 +98,9 @@ table {
 }
 
 .start-game-button {
+  background-color: $pop-color-1;
   border: $border-size $border-type $pop-color-2;
   border-radius: $border-radius;
-  background-color: $pop-color-1;
   color: $pop-color-2;
   display: block;
   font-size: $splash-font-size;
@@ -129,10 +129,10 @@ input:focus::-webkit-input-placeholder {
   color: #cb4154;
   display: inline;
   font-size: 100px;
-  padding-top: 50px;
   margin-left: 3%;
-  writing-mode: vertical-rl;
+  padding-top: 50px;
   text-orientation: upright;
+  writing-mode: vertical-rl;
 }
 
 .restart-game-button {
@@ -162,8 +162,8 @@ input:focus::-webkit-input-placeholder {
   font-size: 20px;
   height: $input-height;
   margin-bottom: 20px;
+  margin-top: 20px;
   width: 450px;
-  margin-top: 20px
 }
 
 .question {
