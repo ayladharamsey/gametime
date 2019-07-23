@@ -28,8 +28,7 @@ $(".start-game-button").on("click", function(e) {
   var player3 = new Player($("#player-three-name-input").val());
   var game = new Game(data, [player1, player2, player3]);
   game.startRound();
-  makeBoard(game.currentRound);
-  getCards(game.currentRound, game);
+  startRoundManager(game.currentRound, game)
   guessManager(game, player1, player2, player3, game.currentRound);
   updatePlayerName(player1, player2, player3);
   assignDailyDouble(game.currentRound, game);
@@ -76,7 +75,14 @@ function guessManager(game, player1, player2, player3, round) {
     updatePlayerScore(player1, player2, player3);
     guessDomWork(game)
     endRound(round, game)
+    // $("table").show()
+    // $(".dd").hide()
   });
+}
+
+function startRoundManager(round, game) {
+  makeBoard(round);
+  getCards(round, game);
 }
 
 function guessDomWork(game) {
@@ -94,9 +100,7 @@ function getCards(round, game) {
           game.currentCard = el;
           $(".question").text(game.currentCard.question)
           $(".player-input-labels").text(game.playerSet[game.currentPlayer].playerName + ", it's your turn!")
-          $('.card').on('click', () => {
-            game.currentCard.answer.toLowerCase()
-          })
+          game.currentCard.answer.toLowerCase()
         }
       })
     );
@@ -114,7 +118,8 @@ function makeBoard(currentRound) {
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
       $(".card").on("click", function(e) {
-        $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
+          $(e.target).closest($(`#category-${index + 1}-${card.pointValue.toString()}`)).text(card.question);
+          dom()
       });
     })
   );
@@ -149,25 +154,24 @@ $(".start-game-button").on("click", () => {
   $(".main-page").show();
 });
 
-
-$('.card').on('click', () => {
+function dom() {
   $('#player-answer-input').val('')
   $('.main-h1').hide();
   $('.player-bar').hide();
   $("table").hide()
   $(".question-and-answer").show()
-})
+}
 
 $('#player-answer-button').on('click', () => {
-  $('.main-h1').show();
-  $('.player-bar').show();
   $(".question-and-answer").hide()
-  $("table").show()
   $(".dd").hide()
+  $("table").show()
+  $('.main-h1').show()
+  $('.player-bar').show();
 })
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet)
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
@@ -175,28 +179,27 @@ function endRound(round, game) {
     });
     game.startRound()
     round.remainingCardCount = 16
-    makeBoard(game.currentRound);
-    getCards(game.currentRound, game);
+    startRoundManager(game.currentRound, game)
     round.assignDailyDouble2()
     assignDailyDouble(round, game)
     displayRoundWinner(round)
   } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
+    $("table").hide()
     game.startRound();
-    $("table").text("The Final Category is..." + game.currentRound.categories[0][0])
+    $("#final-category").text("The Final Category is..." + game.currentRound.categories[0][0])
     console.log(game.currentRound)
   }
 }
 
 
+
+
 function assignDailyDouble(round, game) {
   $(".card").on("click", () => {
-    console.log(round.dailyDouble1)
-    console.log(round.dailyDouble2)
   if (round.dailyDouble1 === round.remainingCardCount || round.dailyDouble2 === round.remainingCardCount) {
     $(".player-input-labels-dd").text(game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!")
     $(".dd").show()
     takeWager(game)
-    console.log("DailyDOUBLEEEE")
     }
   })
 }
