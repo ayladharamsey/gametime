@@ -6,6 +6,8 @@ import brick from "../src/brick.png"
 import Round from "./Round";
 var tableClone = $("table").clone()
 
+
+
 let data;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(response => response.json())
@@ -36,6 +38,7 @@ $(".start-game-button").on("click", function(e) {
   updatePlayerName(player1, player2, player3);
 });
 
+
 function evaluateGuess(game) {
   if (game.currentRoundNum === 1) {
     if (game.currentPlayer === 2 && game.currentCard.answer.toLowerCase() !== game.playerSet[game.currentPlayer].guess) {
@@ -63,13 +66,14 @@ function evaluateGuess(game) {
   }
 }
 
+
 function assignGuess(game) {
   game.playerSet[game.currentPlayer].guess = $(
-    `#player-answer-input`).val();
+    '#player-answer-input').val();
 }
 
 function guessManager(game, player1, player2, player3, round) {
-  $(`#player-answer-button`).on("click", function(e) {
+  $('#player-answer-button').on("click", function(e) {
     e.preventDefault();
     round.remainingCardCount --
     assignGuess(game);
@@ -109,9 +113,7 @@ function makeBoard(currentRound) {
     // })
     $(`#category-name-${index + 1}`).html(cat[0]
       .replace(/([A-Z])/g, ' $1')
-      .replace(/^./, function(str) {
-        return str.toUpperCase()
-      }));
+      .replace(/^./, function(str){return str.toUpperCase()}));
   });
   currentRound.cardSet.forEach(el =>
     el.forEach((card, index) => {
@@ -136,12 +138,12 @@ function updatePlayerScore(player1, player2, player3) {
   $("#player-3-score").text(`Score: ${player3.playerScore}`);
 }
 
-function displayRoundWinner(round) {
-  if (round.remainingCardCount === 0) {
+ function displayRoundWinner(round) {
+   if (round.remainingCardCount === 0) {
     $('.round-winner').show()
     $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
-  }
-}
+   }
+ }
 
 // increasePointValue() {} (only called on Round 2)
 
