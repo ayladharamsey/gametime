@@ -34,7 +34,7 @@ $(".start-game-button").on("click", function(e) {
   getCards(game.currentRound, game);
   guessManager(game, player1, player2, player3, game.currentRound);
   updatePlayerName(player1, player2, player3);
-  assignDailyDouble(game.currentRound, game)
+  assignDailyDouble(game.currentRound, game);
 });
 
 function evaluateGuess(game) {
@@ -76,13 +76,19 @@ function guessManager(game, player1, player2, player3, round) {
     assignGuess(game);
     evaluateGuess(game, round);
     updatePlayerScore(player1, player2, player3);
-    $(`#${game.block}`).html(`<img style="height:60px; width:100px;" id="brick" src=${brick} />`)
-    $(`#${game.block}`).off()
-    $(".question-and-answer").hide()
-    $("table").show()
-    $(".dd").hide()
+    guessDomWork(game)
     endRound(round, game)
   });
+}
+
+
+
+function guessDomWork(game) {
+  $(`#${game.block}`).html(`<img style="height:60px; width:100px;" id="brick" src=${brick} />`)
+  $(`#${game.block}`).off()
+  $(".question-and-answer").hide()
+  $("table").show()
+  $(".dd").hide()
 }
 
 function getCards(round, game) {
@@ -106,9 +112,6 @@ function getCards(round, game) {
 
 function makeBoard(currentRound) {
   currentRound.categories.forEach((cat, index) => {
-    // cat[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){
-    //   return str.toUpperCase();
-    // })
     $(`#category-name-${index + 1}`).html(cat[0]
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, function(str) {
@@ -167,7 +170,7 @@ $('#player-answer-button').on('click', () => {
 })
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet)
     $("table").replaceWith(tableClone)
     $('.card').each(function() {
@@ -180,9 +183,9 @@ function endRound(round, game) {
     round.assignDailyDouble2()
     assignDailyDouble(round, game)
     displayRoundWinner(round)
-  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 2) {
-    $("table").text("The Final Category is..." + game.currentRound.categories[0][0])
+  } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
     game.startRound();
+    $("table").text("The Final Category is..." + game.currentRound.categories[0][0])
     console.log(game.currentRound)
   }
 }
@@ -215,7 +218,3 @@ function takeWager(game) {
       }
     })
 }
-
-
-
-// determineCardValueForRounds() {}
