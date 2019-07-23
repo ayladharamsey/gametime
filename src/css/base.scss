@@ -183,6 +183,101 @@ input:focus::-webkit-input-placeholder {
   width: 450px;
 }
 
+.final-round-page {
+  border: 10px $border-type $pop-color-3;
+  text-align: center;
+  width: 1100px;
+  height: 490px;
+  display: inline-block;
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 15%
+}
+
+#final-category {
+  color: $pop-color-1;
+  font-size: 63px;
+  margin-top: 30px;
+}
+
+#final-clue {
+  color: $neutral-color;
+  font-size: 45px;
+  margin-top: 30px;
+}
+
+.final-round-player-box {
+  display: inline-block;
+  margin-top: 100px;
+}
+
+#player-2-final-info {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.final-round-label {
+  font-size: 30px;
+  color: $neutral-color;
+  display: block;
+}
+
+.final-wage-input,
+.final-answer-input {
+  border: $border-size $border-type $pop-color-3;
+  border-radius: $border-radius;
+  font-size: 18px;
+  height: 40px;
+  text-align: $center;
+  width: 260px;
+}
+
+#final-round-player-1 {
+  color: $pop-color-3;
+  font-size: 46px;
+}
+
+#final-round-player-2 {
+  color: $pop-color-2;
+  font-size: 46px;
+}
+
+#final-round-player-3 {
+  color: $pop-color-1;
+  font-size: 46px;
+}
+
+#player-1-final-wager-button,
+#player-1-final-answer-button {
+  border: 2px $border-type $pop-color-1;
+  background-color: $pop-color-3;
+  border-radius: 50%;
+  color: $neutral-color;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+#player-2-final-wager-button,
+#player-2-final-answer-button {
+  border: 2px $border-type $pop-color-3;
+  background-color: $pop-color-2;
+  border-radius: 50%;
+  color: $neutral-color;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+#player-3-final-wager-button,
+#player-3-final-answer-button {
+  border: 2px $border-type $pop-color-2;
+  background-color: $pop-color-1;
+  border-radius: 50%;
+  color: $neutral-color;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
 
 //this is just for testing purposes delete after
 .round-winner {

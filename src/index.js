@@ -11,6 +11,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
   .then(fetchData => (data = fetchData.data));
 
 $(document).ready(function() {
+  $('.final-round-page').hide();
   $(':input[type="submit"]').prop("disabled", true);
   $('input[type="text"]').keyup(function() {
     if (
@@ -176,7 +177,7 @@ $("#player-answer-button").on("click", () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     displayRoundWinner(round, game);
     setTimeout(function() {
@@ -199,6 +200,7 @@ function endRound(round, game) {
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
     }, 7000)
+
   }
 }
 
