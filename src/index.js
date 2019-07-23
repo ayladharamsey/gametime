@@ -11,6 +11,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
   .then(fetchData => (data = fetchData.data));
 
 $(document).ready(function() {
+  $('.final-round-page').hide();
   $(':input[type="submit"]').prop("disabled", true);
   $('input[type="text"]').keyup(function() {
     if (
@@ -159,7 +160,6 @@ $('.restart-game-button').on('click', () => {
 $('.start-game-button').on('click', () => {
   $('.splash-page').hide();
   $('.main-page').show();
-  $('.final-round-page').hide();
 });
 
 function clickCardDom() {
@@ -179,7 +179,7 @@ $("#player-answer-button").on("click", () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     $("table").replaceWith(tableClone);
     $(".card").each(function() {
@@ -191,7 +191,7 @@ function endRound(round, game) {
     round.assignDailyDouble2();
     assignDailyDouble(round, game);
     displayRoundWinner(round);
-  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 2) {
+  } else if (round.remainingCardCount === 15 && game.currentRoundNum === 2) {
     $('table').hide();
     $('.final-round-page').show();
     game.startRound();

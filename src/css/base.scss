@@ -182,3 +182,26 @@ input:focus::-webkit-input-placeholder {
   height: $input-height;
   width: 450px;
 }
+
+.final-round-page {
+  border: 10px $border-type $pop-color-3;
+  text-align: center;
+  width: 1100px;
+  height: 460px;
+  display: inline-block;
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 15%
+}
+
+#final-category {
+  color: $pop-color-1;
+  font-size: 63px;
+  margin-top: 30px;
+}
+
+#final-clue {
+  color: $neutral-color;
+  font-size: 45px;
+  margin-top: 30px;
+}
