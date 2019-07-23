@@ -9,8 +9,6 @@
 
 ### Utilizing:
 
-#### - HTML #### - CSS/SCSS
-#### - JavaScript
-#### - jQuery
-#### - Webpack
-#### - Fetch API
+#### - HTML  - CSS/SCSS
+#### - JavaScript  - jQuery
+#### - Webpack  - Fetch API
