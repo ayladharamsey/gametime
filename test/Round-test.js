@@ -1,6 +1,5 @@
 import chai from 'chai'
 import data from '../src/dataset.js'
-import Player from '../src/Player.js'
 import Round from '../src/Round.js'
 import Game from '../src/Game.js';
 const expect = chai.expect;
@@ -46,13 +45,12 @@ describe('Round', () => {
     expect(round.cardSet[3].length).to.eql(4)
   });
 
-  it('should generate a second dailyDouble in Round 2; it should not equal dailyDouble1', () => {
+  it('should generate a second dailyDouble in Round 2', () => {
     expect(round.dailyDouble2).to.equal(undefined)
     game.startRound()
     round = game.currentRound
-    round.generateRandomDailyDoubleCard2()
-    // expect(round.dailyDouble2).to.not.equal(undefined);
-    expect(round.dailyDouble2).to.not.equal(round.dailyDouble1);
+    round.assignDailyDouble2()
+    expect(game.currentRound.dailyDouble2).to.equal(undefined);
   }); 
 
 });
