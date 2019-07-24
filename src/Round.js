@@ -17,7 +17,7 @@ class Round {
     this.roundWinner = winners.sort((a, b) => {
       return b.playerScore - a.playerScore
     })
-    console.log(this.roundWinner[0])
+    return this.roundWinner[0]
   }
 
   assignDailyDouble2() {
@@ -25,8 +25,6 @@ class Round {
       this.dailyDouble2 = Math.floor(Math.random() * 14) + 1;
     }
   }
-
-
- }
+}
 
  export default Round;

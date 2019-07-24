@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" src="css/base.scss">
   <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <section class="splash-page">
     <h1 class="splash-h1">Welcome To Jeopardy!</h1>
@@ -32,11 +33,42 @@
       <button type="submit" class="start-game-button">Start Game</button>
     </form>
   </section>
-  <section class="main-page" style="display: none;">
+  <section class="final-round-page">
+    <h2 id="final-category">Category</h2>
+    <h4 id="final-clue">Final Clue</h4>
+    <div class="final-round-player-box" id="player-1-final-info">
+      <h2 class="players-final" id="final-round-player-1">Player 1</h2>
+      <label class="final-round-label" for="player-1-final-wager">Final Wager</label>
+      <input type="text" class="final-wage-input" id="player-1-final-wager" placeholder="Enter Final Wager">
+      <button type="sumbit" class="final-round-wager-button" id="player-1-final-wager-button">S</button>
+      <label class="final-round-label" for="player-1-final-answer">Final Answer</label>
+      <input type="text" class="final-answer-input" id="player-1-final-answer" placeholder="Enter Final Answer">
+      <button type="sumbit" class="final-round-answer-button" id="player-1-final-answer-button">S</button>
+    </div>
+    <div class="final-round-player-box" id="player-2-final-info">
+      <h2 class="players-final" id="final-round-player-2">Player 2</h2>
+      <label class="final-round-label" for="player-2-final-wager">Final Wager</label>
+      <input type="text" class="final-wage-input" id="player-2-final-wager" placeholder="Enter Final Wager">
+      <button type="sumbit" class="final-round-wager-button" id="player-2-final-wager-button">S</button>
+      <label class="final-round-label" for="player-2-final-answer">Final Answer</label>
+      <input type="text" class="final-answer-input" id="player-2-final-answer" placeholder="Enter Final Answer">
+      <button type="sumbit" class="final-round-answer-button" id="player-2-final-answer-button">S</button>
+    </div>
+    <div class="final-round-player-box" id="player-3-final-info">
+      <h2 class="players-final" id="final-round-player-3">Player 3</h2>
+      <label class="final-round-label" for="player-3-final-wager">Final Wager</label>
+      <input type="text" class="final-wage-input" id="player-3-final-wager" placeholder="Enter Final Wager">
+      <button type="sumbit" class="final-round-wager-button" id="player-3-final-wager-button">S</button>
+      <label class="final-round-label" for="player-3-final-answer">Final Answer</label>
+      <input type="text" class="final-answer-input" id="player-3-final-answer" placeholder="Enter Final Answer">
+      <button type="sumbit" class="final-round-answer-button" id="player-3-final-answer-button">S</button>
+    </div>
+  </section>
+  <section class="main-page" hidden>
     <button type="submit" class="restart-game-button">Restart Game</button>
     <h1 class="main-h1">Jeopardy</h1>
-    <div class="question-and-answer" style="display: none">
-      <div class="dd" style="display: none">
+    <div class="question-and-answer" style="display: none" ;>
+      <div class="dd" style="display: none;">
         <h2>"ITS THE DAILY DOUBLE"</h2>
         <label for="player-1-hidden-input" class="player-input-labels-dd">Wager</label>
         <input type="text" class="hidden-input" id="player-1-hidden-input" placeholder="Enter Wager">
@@ -83,47 +115,23 @@
         <th class="card" id="category-4-400">400</th>
       </tr>
     </table>
-    <!-- <section class="final-round-page">
-  <h2 id="final-category">Category</h2>
-   <h4 id="final-clue">Final Clue</h4> -->
-<!-- </section>  -->
     <section class="player-bar">
       <span class="round-winner" hidden>Round</span>
       <article id="player-1-info">
         <h2 class="player-name" id="player-1-name">Player 1 Name</h2>
         <h3 class="player-score" id="player-1-score">Score: </h3>
-        <form class="player-forms" id="player-1-form">
-          <article class="wager-info" id="player-1-wager-input" hidden>
-            <label for="player-1-hidden-input" class="player-input-labels">Wager</label>
-            <input type="text" class="hidden-input" id="player-1-hidden-input" placeholder="Enter Wager">
-            <button type="submit" class="player-buttons" id="player-1-wager-button">Wager!</button>
-          </article>
-        </form>
       </article>
       <article id="player-2-info">
         <h2 class="player-name" id="player-2-name">Player 2 Name</h2>
         <h3 class="player-score" id="player-2-score">Score: </h3>
       </article>
-      <article class="wager-info" id="player-1-wager-input" hidden>
-        <label for="player-2-hidden-input" class="player-input-labels">Wager</label>
-        <input type="text" class="hidden-input" id="player-2-hidden-input" placeholder="Enter Wager">
-        <button type="submit" class="player-buttons" id="player-2-wager-button">Wager!</button>
-      </article>
-      </form>
-      </article>
       <article id="player-3-info">
         <h2 class="player-name" id="player-3-name">Player 3 Name</h2>
         <h3 class="player-score" id="player-3-score">Score:</h3>
       </article>
-      <article class="wager-info" id="player-1-wager-input" hidden>
-        <label for="player-3-hidden-input" class="player-input-labels">Wager</label>
-        <input type="text" class="hidden-input" id="player-3-hidden-input" placeholder="Enter Wager">
-        <button type="submit" class="player-buttons" id="player-3-wager-button">Wager!</button>
-      </article>
-      </form>
-      </article>
     </section>
 </body>
+
 </html>
 
 <!-- <div class="question-and-answer" style="display: none";>
