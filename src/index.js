@@ -2,6 +2,7 @@ import "./css/base.scss";
 import $ from "jquery";
 import Game from "../src/Game.js";
 import Player from "../src/Player.js";
+// import FinalRound from "../src/FinalRound.js"
 import brick from "../src/brick.png";
 
 var tableClone = $("table").clone();
@@ -189,7 +190,7 @@ $("#player-answer-button").on("click", () => {
   $(".player-bar").show();
 });
 
-function endRound(round, game) {
+function endRound(round, game, finalround) {
   if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     displayRoundWinner(round, game);
@@ -216,6 +217,7 @@ function endRound(round, game) {
       $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
+      $("#final-clue").text(game.currentRound.finalCard.map(card => card.question));
     }, 2000);
   }
 }
