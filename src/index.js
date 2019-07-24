@@ -190,7 +190,7 @@ $("#player-answer-button").on("click", () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 0 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     displayRoundWinner(round, game);
     setTimeout(function() {
@@ -205,7 +205,7 @@ function endRound(round, game) {
       assignDailyDouble(round, game);
       $(".round-winner").hide();
     }, 2000);
-  } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
+  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 2) {
     $("table").hide();
     displayRoundWinner(round, game);
     setTimeout(function() {

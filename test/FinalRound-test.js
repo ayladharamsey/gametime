@@ -28,28 +28,5 @@ describe('FinalRound', function() {
   it('should have a property of the final card', () => {
     expect(final.cardSet[3].length).to.equal(1)
   });
-  
-//   it('should', () => {
-//     expect().to.equal()
-//   });
-  
-//   it('should', () => {
-//     expect().to.equal()
-//   });
-  
-//   it('should', () => {
-//     expect().to.equal()
-//   });
-  
-//   it('should', () => {
-//     expect().to.equal()
-//   })
-  
-//   it('should', () => {
-
-//     expect().to.equal()
-//   })
-  
-  
 });
   
