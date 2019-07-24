@@ -3,6 +3,7 @@ import $ from "jquery";
 import Game from '../src/Game.js';
 import Player from '../src/Player.js';
 import brick from '../src/brick.png';
+
 var tableClone = $('table').clone();
 
 let data;
@@ -11,14 +12,15 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(fetchData => (data = fetchData.data));
 
 $(document).ready(function() {
-  $(':input[type="submit"]').prop("disabled", true);
+  $('.start-game-button').prop("disabled", true);
+  $('.final-round-page').hide();
   $('input[type="text"]').keyup(function() {
     if (
       $('#player-one-name-input').val() !== "" &&
       $('#player-two-name-input').val() !== "" &&
       $('#player-three-name-input').val() !== ""
     ) {
-      $(':input[type="submit"]').prop('disabled', false);
+      $('.start-game-button').prop("disabled", false);
     }
   });
 });
@@ -144,12 +146,16 @@ function updatePlayerScore(player1, player2, player3) {
   $('#player-3-score').text(`Score: ${player3.playerScore}`);
 }
 
-function displayRoundWinner(round) {
-  $('table').hide();
-  $('.round-winner').show();
-  $('.round-winner').text(
-    `Congratuations ${round.roundWinner[0].playerName} you won the round!`
-  );
+function displayRoundWinner(round, game) {
+  if (game.currentRoundNum === 1 || game.currentRoundNum === 2) {
+    $("table").hide();
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+  } else if (game.currentRoundNum === 3) {
+    $("table").hide();
+    $('.round-winner').show()
+    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the whole game! WOWZA!`)
+  }
 }
 
 $('.restart-game-button').on('click', () => {
@@ -178,7 +184,7 @@ $('#player-answer-button').on('click', () => {
 });
 
 function endRound(round, game) {
-  if (round.remainingCardCount === 12 && game.currentRoundNum === 1) {
+  if (round.remainingCardCount === 15 && game.currentRoundNum === 1) {
     round.determineRoundWinner(game.playerSet);
     displayRoundWinner(round, game);
     setTimeout(function() {
@@ -191,17 +197,20 @@ function endRound(round, game) {
       startRoundManager(game.currentRound, game);
       round.assignDailyDouble2();
       assignDailyDouble(round, game);
-    }, 7000);
+      $('.round-winner').hide()
+    }, 2000)
   } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
     $('table').hide();
     displayRoundWinner(round, game);
     setTimeout(function() {
       game.startRound();
-      $('#final-category').text(
+      $('.round-winner').hide()
+      $('.final-round-answers').hide()
+      $(".final-round-page").show()
+      $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
-    }, 7000);
-  }
+    }, 2000)
 }
 
 function assignDailyDouble(round, game) {
@@ -213,7 +222,8 @@ function assignDailyDouble(round, game) {
       $('.player-input-labels-dd').text(
         game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!"
       );
-      $('.dd').show();
+      $(".dd").show();
+      $("#player-answer-button").prop("disabled", true)
       takeWager(game);
     }
   });
@@ -222,9 +232,12 @@ function assignDailyDouble(round, game) {
 function takeWager(game) {
   $('#player-1-wager-button').on('click', () => {
     if (game.currentRoundNum === 1) {
-      game.currentCard.pointValue = $('#player-1-hidden-input').val();
+      game.currentCard.pointValue = Math.max($("#player-1-hidden-input").val(), 0)
     } else if (game.currentRoundNum === 2) {
-      game.currentCard.pointValue = $('#player-1-hidden-input').val() / 2;
+      game.currentCard.pointValue = Math.max($("#player-1-hidden-input").val(), 0) / 2;
+    }
+    if ($("#player-1-hidden-input").val() < Math.max(game.playerSet[game.currentPlayer].playerScore, 0) + 101) {
+      $("#player-answer-button").prop("disabled", false)
     }
   });
 }
