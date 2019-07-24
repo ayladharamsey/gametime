@@ -203,6 +203,7 @@ function endRound(round, game) {
     setTimeout(function() {
       game.startRound();
       $('.round-winner').hide()
+      $('.final-round-answers').hide()
       $(".final-round-page").show()
       $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
