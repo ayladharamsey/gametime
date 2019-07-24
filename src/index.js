@@ -150,9 +150,10 @@ function updatePlayerScore(player1, player2, player3) {
 function displayRoundWinner(round, game) {
   if (game.currentRoundNum === 1 || game.currentRoundNum === 2) {
     $("table").hide();
-    $('.main-h1').hide();
-    $('.round-winner').show()
-    $('.round-winner').text(`Congratuations ${round.roundWinner[0].playerName} you won the round!`)
+    $(".round-winner").show();
+    $(".round-winner").text(
+      `Congratulations ${round.roundWinner[0].playerName}, you won the round!`
+    );
   } else if (game.currentRoundNum === 3) {
     $("table").hide();
     $(".round-winner").show();
@@ -203,18 +204,16 @@ function endRound(round, game, finalround) {
       startRoundManager(game.currentRound, game);
       round.assignDailyDouble2();
       assignDailyDouble(round, game);
-      $('.round-winner').hide()
-      $('.main-h1').show();
-    }, 2000)
-  } else if (round.remainingCardCount === 0 && game.currentRoundNum === 2) {
+      $(".round-winner").hide();
+    }, 2000);
+  } else if (round.remainingCardCount === 12 && game.currentRoundNum === 2) {
     $("table").hide();
     displayRoundWinner(round, game);
     setTimeout(function() {
       game.startRound();
-      $('.main-h1').show();
-      $('.round-winner').hide()
-      $('.final-round-answers').hide()
-      $(".final-round-page").show()
+      $(".round-winner").hide();
+      $(".final-round-answers").hide();
+      $(".final-round-page").show();
       $("#final-category").text(
         "The Final Category is..." + game.currentRound.categories[0][0]
       );
@@ -230,7 +229,7 @@ function assignDailyDouble(round, game) {
       round.dailyDouble2 === round.remainingCardCount
     ) {
       $(".player-input-labels-dd").text(
-        game.playerSet[game.currentPlayer].playerName + "  Please Enter a Wager!"
+        game.playerSet[game.currentPlayer].playerName + "Please Enter a Wager!"
       );
       $(".dd").show();
       $("#player-answer-button").prop("disabled", true);
