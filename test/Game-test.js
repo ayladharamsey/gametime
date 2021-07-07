@@ -2,8 +2,7 @@ import chai from 'chai';
 const expect = chai.expect;
 import data from '../src/dataset.js'
 import Game from '../src/Game';
-// import Player from '../src/Player.js';
-// import Round from '../src/Round.js';
+
 describe('Game', function() {
 
   let game;
@@ -59,6 +58,4 @@ describe('Game', function() {
     game.startRound()
     expect(game.currentRoundNum).to.equal(1)
   })
-
-
 });

@@ -1,4 +1,3 @@
-import Player from "./Player";
 import Round from "./Round";
 import FinalRound from "./FinalRound";
 
@@ -73,8 +72,6 @@ class Game {
     });
     this.cardSet = finalCardSet;
   }
-
-  endGame() {}
 }
 
 export default Game;
